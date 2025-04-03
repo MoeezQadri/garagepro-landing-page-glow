@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,7 +19,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useCMS } from "@/contexts/CMSContext";
 import { useNavigate } from "react-router-dom";
-import { Edit, Save, ArrowLeft, Plus, Trash2 } from "lucide-react";
+import { Edit, Save, ArrowLeft, Plus, Trash2, Book, Eye } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 // Simple admin password for demo purposes
 // In a real app, use proper authentication
@@ -726,6 +726,171 @@ const EditContactSection: React.FC = () => {
   );
 };
 
+// Add a new component for editing blog posts
+const EditBlogSection: React.FC = () => {
+  const { content, updateContent, isEditing } = useCMS();
+  const { blog } = content;
+  const navigate = useNavigate();
+  
+  const handleAddPost = () => {
+    const id = Date.now().toString();
+    const newPost = {
+      id,
+      title: "New Blog Post",
+      slug: `new-post-${id}`,
+      author: "Author Name",
+      date: new Date().toISOString().split('T')[0],
+      summary: "Summary of the blog post",
+      content: "# New Blog Post\n\nWrite your content here...",
+      imageUrl: "",
+      tags: ["Tag1", "Tag2"],
+      published: false
+    };
+    
+    updateContent("blog.posts", [...blog.posts, newPost]);
+  };
+  
+  const handleRemovePost = (id: string) => {
+    const newPosts = blog.posts.filter(post => post.id !== id);
+    updateContent("blog.posts", newPosts);
+  };
+  
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Blog Section</CardTitle>
+        <CardDescription>Manage your blog posts</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <EditableField path="blog.section.title" label="Section Title" value={blog.section.title || ""} />
+        <EditableField 
+          path="blog.section.description" 
+          label="Section Description" 
+          value={blog.section.description || ""} 
+          multiline 
+        />
+        
+        {isEditing && (
+          <div className="mt-6 mb-4">
+            <div className="flex justify-between items-center">
+              <h3 className="text-lg font-medium">Blog Posts</h3>
+              <Button 
+                size="sm" 
+                variant="outline" 
+                onClick={handleAddPost}
+                className="h-8 px-2"
+              >
+                <Plus className="h-4 w-4 mr-1" /> Add Post
+              </Button>
+            </div>
+            
+            <div className="space-y-4 mt-4">
+              {blog.posts.map((post) => (
+                <Card key={post.id} className="border-dashed">
+                  <CardHeader className="p-4 pb-2">
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="text-base flex items-center">
+                        <Book className="h-4 w-4 mr-2" />
+                        {post.title}
+                        {!post.published && (
+                          <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded ml-2">
+                            Draft
+                          </span>
+                        )}
+                      </CardTitle>
+                      <div className="flex items-center space-x-2">
+                        <Button 
+                          size="sm" 
+                          variant="ghost" 
+                          onClick={() => navigate(`/blog/${post.slug}`)}
+                          className="h-8 px-2"
+                        >
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          variant="ghost" 
+                          onClick={() => handleRemovePost(post.id)}
+                          className="h-8 px-2 text-destructive hover:text-destructive"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-4 pt-0">
+                    <EditableField 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].title`} 
+                      label="Title" 
+                      value={post.title} 
+                    />
+                    <EditableField 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].slug`} 
+                      label="Slug (URL path)" 
+                      value={post.slug} 
+                    />
+                    <EditableField 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].author`} 
+                      label="Author" 
+                      value={post.author} 
+                    />
+                    <EditableField 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].date`} 
+                      label="Date" 
+                      value={post.date} 
+                      type="date" 
+                    />
+                    <EditableField 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].summary`} 
+                      label="Summary" 
+                      value={post.summary} 
+                      multiline 
+                    />
+                    <div className="space-y-2 mb-4">
+                      <Label htmlFor={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].content`}>
+                        Content (Markdown)
+                      </Label>
+                      <Textarea
+                        id={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].content`}
+                        className="min-h-[300px] font-mono text-sm"
+                        value={post.content || ""}
+                        onChange={(e) => updateContent(`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].content`, e.target.value)}
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        Use Markdown formatting: # for headings, ** for bold, * for italic, etc.
+                      </p>
+                    </div>
+                    <EditableImage 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].imageUrl`} 
+                      label="Featured Image URL" 
+                      value={post.imageUrl || ""} 
+                    />
+                    <EditableList 
+                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].tags`}
+                      items={post.tags}
+                      label="Tags"
+                    />
+                    <div className="flex items-center space-x-2 my-4">
+                      <Checkbox 
+                        id={`published-${post.id}`} 
+                        checked={post.published}
+                        onCheckedChange={(checked) => {
+                          updateContent(`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].published`, checked === true);
+                        }}
+                      />
+                      <Label htmlFor={`published-${post.id}`}>Publish this post</Label>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
 const AdminPanel: React.FC = () => {
   const { saveContent, isEditing, setIsEditing } = useCMS();
   const navigate = useNavigate();
@@ -768,47 +933,8 @@ const AdminPanel: React.FC = () => {
         </div>
         
         <Tabs defaultValue="hero">
-          <TabsList className="grid w-full grid-cols-5 mb-8">
+          <TabsList className="grid w-full grid-cols-6 mb-8">
             <TabsTrigger value="hero">Hero</TabsTrigger>
             <TabsTrigger value="features">Features</TabsTrigger>
             <TabsTrigger value="pricing">Pricing</TabsTrigger>
             <TabsTrigger value="testimonials">Testimonials</TabsTrigger>
-            <TabsTrigger value="contact">Contact</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="hero">
-            <EditHeroSection />
-          </TabsContent>
-          
-          <TabsContent value="features">
-            <EditFeaturesSection />
-          </TabsContent>
-          
-          <TabsContent value="pricing">
-            <EditPricingSection />
-          </TabsContent>
-          
-          <TabsContent value="testimonials">
-            <EditTestimonialsSection />
-          </TabsContent>
-          
-          <TabsContent value="contact">
-            <EditContactSection />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
-  );
-};
-
-const Admin = () => {
-  const { isAdmin, setIsAdmin } = useCMS();
-  
-  if (!isAdmin) {
-    return <AdminLogin onLogin={() => setIsAdmin(true)} />;
-  }
-  
-  return <AdminPanel />;
-};
-
-export default Admin;

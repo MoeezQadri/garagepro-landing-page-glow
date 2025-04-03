@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 // Define types for our CMS content
@@ -33,6 +32,19 @@ export type FeatureType = {
   description: string;
 };
 
+export type BlogPostType = {
+  id: string;
+  title: string;
+  slug: string;
+  author: string;
+  date: string;
+  summary: string;
+  content: string;
+  imageUrl: string;
+  tags: string[];
+  published: boolean;
+};
+
 export type CMSContent = {
   hero: SectionContent & {
     stats?: { label: string; value: string }[];
@@ -59,6 +71,10 @@ export type CMSContent = {
     phone: string;
     address: string[];
     guarantee: string;
+  };
+  blog: {
+    section: SectionContent;
+    posts: BlogPostType[];
   };
 };
 
@@ -245,6 +261,127 @@ const defaultContent: CMSContent = {
     phone: "(555) 123-4567",
     address: ["1234 Auto Avenue", "Suite 500", "Detroit, MI 48226"],
     guarantee: "If GaragePro doesn't improve your garage's efficiency within 90 days, we'll refund your subscription fee. No questions asked."
+  },
+  blog: {
+    section: {
+      title: "Latest News & Updates",
+      description: "Stay up to date with the latest auto shop tips, industry trends, and GaragePro features."
+    },
+    posts: [
+      {
+        id: "1",
+        title: "5 Ways to Increase Your Auto Shop's Efficiency",
+        slug: "increase-auto-shop-efficiency",
+        author: "GaragePro Team",
+        date: "2023-10-15",
+        summary: "Learn how to streamline your operations and increase your shop's throughput with these proven tactics.",
+        content: `
+# 5 Ways to Increase Your Auto Shop's Efficiency
+
+Running a successful auto repair shop isn't just about technical expertise—it's about operational efficiency. Here are five proven strategies to help you maximize your shop's productivity:
+
+## 1. Implement a Digital Scheduling System
+
+Paper schedules and phone bookings are outdated. A digital scheduling system allows customers to book appointments online, reducing phone interruptions and administrative overhead. It also provides a clear visual overview of your day, week, or month, making it easier to manage technician time.
+
+## 2. Streamline Your Parts Management
+
+Efficient parts management is crucial for minimizing downtime. Consider implementing:
+
+- Barcode scanning for quick inventory tracking
+- Automated reordering for commonly used parts
+- Organized storage systems with clear labeling
+- Regular inventory audits to prevent discrepancies
+
+## 3. Standardize Your Processes
+
+Create standard operating procedures (SOPs) for common repairs and maintenance tasks. This ensures consistency, reduces errors, and makes training new technicians easier. Document these procedures with step-by-step instructions and photos when possible.
+
+## 4. Improve Communication
+
+Poor communication leads to delays and mistakes. Implement:
+
+- Morning huddles to discuss the day's work
+- Digital job boards visible to all staff
+- Instant messaging systems for quick questions
+- Regular team meetings to address recurring issues
+
+## 5. Invest in Training
+
+Well-trained technicians work faster and more accurately. Allocate time and resources for:
+
+- Regular technical training on new vehicle systems
+- Cross-training technicians on multiple vehicle types
+- Software training for your shop management system
+- Customer service training for front desk staff
+
+By implementing these strategies, you can significantly increase your shop's throughput without sacrificing quality or customer satisfaction.
+        `,
+        imageUrl: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?q=80&w=1000",
+        tags: ["Efficiency", "Management", "Tips"],
+        published: true
+      },
+      {
+        id: "2",
+        title: "The Future of Auto Repair: Trends to Watch",
+        slug: "future-of-auto-repair",
+        author: "Michael Rodriguez",
+        date: "2023-09-28",
+        summary: "From electric vehicles to advanced diagnostics, explore the trends that will shape the future of auto repair.",
+        content: `
+# The Future of Auto Repair: Trends to Watch
+
+The automotive repair industry is evolving rapidly as vehicle technology advances. Here are the key trends that will shape the future of auto repair:
+
+## Electric Vehicle Specialization
+
+As EV adoption accelerates, shops need technicians specifically trained in electric vehicle repair. This includes:
+
+- High-voltage safety protocols
+- Battery system diagnostics and repair
+- Electric motor service
+- Regenerative braking systems
+
+Shops that invest early in EV capabilities will have a significant competitive advantage in the coming years.
+
+## Advanced Driver Assistance Systems (ADAS)
+
+Modern vehicles come equipped with numerous safety systems that require specialized knowledge:
+
+- Camera and sensor calibration
+- Radar alignment
+- Lidar system service
+- Over-the-air update management
+
+These systems must be precisely calibrated after many common repairs, including windshield replacement and alignment work.
+
+## Augmented Reality Diagnostics
+
+AR technology is changing how technicians diagnose and repair vehicles:
+
+- AR glasses that overlay repair information on the vehicle
+- Real-time access to repair procedures while working
+- Remote expert assistance for complex problems
+- Guided step-by-step repair instructions
+
+This technology reduces errors and improves efficiency, especially for less experienced technicians.
+
+## Predictive Maintenance
+
+Data-driven maintenance is replacing fixed service intervals:
+
+- Telematics data predicts failures before they occur
+- AI algorithms analyze vehicle performance data
+- Customers receive proactive repair recommendations
+- Reduced vehicle downtime and catastrophic failures
+
+Shops that embrace these technologies will not only thrive in the changing landscape but will also provide better service to their customers.
+        `,
+        imageUrl: "https://images.unsplash.com/photo-1595955777570-bfc489de20db?q=80&w=1000",
+        tags: ["Future", "Technology", "Trends"],
+        published: true
+      }
+    ]
   }
 };
 
