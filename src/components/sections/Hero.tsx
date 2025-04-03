@@ -27,7 +27,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
                 size="lg" 
-                className="bg-garage-600 hover:bg-garage-700 text-white"
+                className="bg-mint-600 hover:bg-mint-700 text-white"
                 onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {hero.buttonText} <ArrowRight size={16} className="ml-2" />
@@ -35,16 +35,16 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-garage-400 text-garage-600 hover:bg-garage-50"
+                className="border-mint-400 text-mint-600 hover:bg-mint-50"
               >
                 See How It Works
               </Button>
             </div>
             <div className="flex items-center space-x-4 pt-2">
               <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-garage-400 border-2 border-white flex items-center justify-center text-xs text-white font-medium">AM</div>
-                <div className="w-8 h-8 rounded-full bg-garage-500 border-2 border-white flex items-center justify-center text-xs text-white font-medium">JS</div>
-                <div className="w-8 h-8 rounded-full bg-garage-600 border-2 border-white flex items-center justify-center text-xs text-white font-medium">KL</div>
+                <div className="w-8 h-8 rounded-full bg-mint-400 border-2 border-white flex items-center justify-center text-xs text-white font-medium">AM</div>
+                <div className="w-8 h-8 rounded-full bg-mint-500 border-2 border-white flex items-center justify-center text-xs text-white font-medium">JS</div>
+                <div className="w-8 h-8 rounded-full bg-mint-600 border-2 border-white flex items-center justify-center text-xs text-white font-medium">KL</div>
               </div>
               <p className="text-sm text-muted-foreground">
                 Trusted by <span className="font-medium text-foreground">{hero.stats?.[0]?.value || "2,000+"}</span> {hero.stats?.[0]?.label || "garage owners"}
@@ -52,7 +52,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="relative animate-fade-in-right">
-            <div className="absolute inset-0 bg-gradient-to-r from-garage-400/10 to-garage-600/10 rounded-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-mint-400/10 to-mint-600/10 rounded-xl"></div>
             <div className="rounded-xl border border-border overflow-hidden shadow-xl">
               <img
                 src={hero.imageUrl}
