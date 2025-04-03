@@ -726,34 +726,60 @@ const EditContactSection: React.FC = () => {
   );
 };
 
-// Add a new component for editing blog posts
+// Add these imports
+import { useBlog, BlogPost } from "@/hooks/useBlog";
+import { format } from "date-fns";
+
+// Modify the EditBlogSection component to work with Supabase
 const EditBlogSection: React.FC = () => {
+  const { useAllPosts, useCreatePost, useUpdatePost, useDeletePost } = useBlog();
+  const { data: posts = [], isLoading } = useAllPosts();
+  const { mutate: createPost } = useCreatePost();
+  const { mutate: updatePost } = useUpdatePost();
+  const { mutate: deletePost } = useDeletePost();
+  
   const { content, updateContent, isEditing } = useCMS();
   const { blog } = content;
   const navigate = useNavigate();
   
   const handleAddPost = () => {
-    const id = Date.now().toString();
-    const newPost = {
-      id,
-      title: "New Blog Post",
-      slug: `new-post-${id}`,
-      author: "Author Name",
-      date: new Date().toISOString().split('T')[0],
-      summary: "Summary of the blog post",
-      content: "# New Blog Post\n\nWrite your content here...",
-      imageUrl: "",
-      tags: ["Tag1", "Tag2"],
-      published: false
-    };
+    // Generate a slug based on current timestamp
+    const timestamp = Date.now();
+    const slug = `new-post-${timestamp}`;
     
-    updateContent("blog.posts", [...blog.posts, newPost]);
+    // Create a new post in Supabase
+    createPost({
+      title: "New Blog Post",
+      slug,
+      content: "# New Blog Post\n\nWrite your content here...",
+      summary: "Summary of the blog post",
+      published: false
+    });
   };
   
   const handleRemovePost = (id: string) => {
-    const newPosts = blog.posts.filter(post => post.id !== id);
-    updateContent("blog.posts", newPosts);
+    if (window.confirm("Are you sure you want to delete this post? This cannot be undone.")) {
+      deletePost(id);
+    }
   };
+  
+  const handleUpdatePost = (post: BlogPost, field: keyof BlogPost, value: any) => {
+    updatePost({
+      id: post.id,
+      [field]: value
+    });
+  };
+  
+  if (isLoading) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Blog Section</CardTitle>
+          <CardDescription>Loading blog posts...</CardDescription>
+        </CardHeader>
+      </Card>
+    );
+  }
   
   return (
     <Card>
@@ -773,7 +799,7 @@ const EditBlogSection: React.FC = () => {
         {isEditing && (
           <div className="mt-6 mb-4">
             <div className="flex justify-between items-center">
-              <h3 className="text-lg font-medium">Blog Posts</h3>
+              <h3 className="text-lg font-medium">Blog Posts (Supabase)</h3>
               <Button 
                 size="sm" 
                 variant="outline" 
@@ -785,7 +811,7 @@ const EditBlogSection: React.FC = () => {
             </div>
             
             <div className="space-y-4 mt-4">
-              {blog.posts.map((post) => (
+              {posts.map((post) => (
                 <Card key={post.id} className="border-dashed">
                   <CardHeader className="p-4 pb-2">
                     <div className="flex justify-between items-center">
@@ -819,67 +845,80 @@ const EditBlogSection: React.FC = () => {
                     </div>
                   </CardHeader>
                   <CardContent className="p-4 pt-0">
-                    <EditableField 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].title`} 
-                      label="Title" 
-                      value={post.title} 
-                    />
-                    <EditableField 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].slug`} 
-                      label="Slug (URL path)" 
-                      value={post.slug} 
-                    />
-                    <EditableField 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].author`} 
-                      label="Author" 
-                      value={post.author} 
-                    />
-                    <EditableField 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].date`} 
-                      label="Date" 
-                      value={post.date} 
-                      type="date" 
-                    />
-                    <EditableField 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].summary`} 
-                      label="Summary" 
-                      value={post.summary} 
-                      multiline 
-                    />
                     <div className="space-y-2 mb-4">
-                      <Label htmlFor={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].content`}>
+                      <Label htmlFor={`title-${post.id}`}>Title</Label>
+                      <Input
+                        id={`title-${post.id}`}
+                        value={post.title}
+                        onChange={(e) => handleUpdatePost(post, 'title', e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2 mb-4">
+                      <Label htmlFor={`slug-${post.id}`}>Slug (URL path)</Label>
+                      <Input
+                        id={`slug-${post.id}`}
+                        value={post.slug}
+                        onChange={(e) => handleUpdatePost(post, 'slug', e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2 mb-4">
+                      <Label htmlFor={`summary-${post.id}`}>Summary</Label>
+                      <Textarea
+                        id={`summary-${post.id}`}
+                        value={post.summary || ""}
+                        onChange={(e) => handleUpdatePost(post, 'summary', e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2 mb-4">
+                      <Label htmlFor={`content-${post.id}`}>
                         Content (Markdown)
                       </Label>
                       <Textarea
-                        id={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].content`}
+                        id={`content-${post.id}`}
                         className="min-h-[300px] font-mono text-sm"
                         value={post.content || ""}
-                        onChange={(e) => updateContent(`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].content`, e.target.value)}
+                        onChange={(e) => handleUpdatePost(post, 'content', e.target.value)}
                       />
                       <p className="text-xs text-muted-foreground">
                         Use Markdown formatting: # for headings, ** for bold, * for italic, etc.
                       </p>
                     </div>
-                    <EditableImage 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].imageUrl`} 
-                      label="Featured Image URL" 
-                      value={post.imageUrl || ""} 
-                    />
-                    <EditableList 
-                      path={`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].tags`}
-                      items={post.tags}
-                      label="Tags"
-                    />
+                    <div className="space-y-2 mb-4">
+                      <Label htmlFor={`image-${post.id}`}>Featured Image URL</Label>
+                      <Input
+                        id={`image-${post.id}`}
+                        value={post.image_url || ""}
+                        onChange={(e) => handleUpdatePost(post, 'image_url', e.target.value)}
+                        placeholder="Image URL"
+                      />
+                      {post.image_url && (
+                        <div className="mt-2">
+                          <p className="text-sm text-muted-foreground mb-1">Preview:</p>
+                          <img 
+                            src={post.image_url} 
+                            alt="Preview" 
+                            className="w-full max-h-40 object-cover rounded-md"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x150?text=Invalid+Image+URL';
+                            }}
+                          />
+                        </div>
+                      )}
+                    </div>
                     <div className="flex items-center space-x-2 my-4">
                       <Checkbox 
                         id={`published-${post.id}`} 
                         checked={post.published}
                         onCheckedChange={(checked) => {
-                          updateContent(`blog.posts[${blog.posts.findIndex(p => p.id === post.id)}].published`, checked === true);
+                          handleUpdatePost(post, 'published', checked === true);
                         }}
                       />
                       <Label htmlFor={`published-${post.id}`}>Publish this post</Label>
                     </div>
+                    <p className="text-xs text-muted-foreground">
+                      Created: {format(new Date(post.created_at), 'MMM d, yyyy')} · 
+                      Updated: {format(new Date(post.updated_at), 'MMM d, yyyy')}
+                    </p>
                   </CardContent>
                 </Card>
               ))}
@@ -906,35 +945,4 @@ const AdminPanel: React.FC = () => {
               onClick={() => navigate('/')}
             >
               <ArrowLeft className="h-4 w-4 mr-2" /> Back to Site
-            </Button>
-            <h1 className="text-2xl font-bold">GaragePro Admin Panel</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Button 
-              variant={isEditing ? "default" : "outline"}
-              onClick={() => setIsEditing(!isEditing)}
-            >
-              {isEditing ? (
-                <>
-                  <Save className="h-4 w-4 mr-2" /> Exit Edit Mode
-                </>
-              ) : (
-                <>
-                  <Edit className="h-4 w-4 mr-2" /> Enter Edit Mode
-                </>
-              )}
-            </Button>
-            {isEditing && (
-              <Button onClick={saveContent}>
-                <Save className="h-4 w-4 mr-2" /> Save Changes
-              </Button>
-            )}
-          </div>
-        </div>
-        
-        <Tabs defaultValue="hero">
-          <TabsList className="grid w-full grid-cols-6 mb-8">
-            <TabsTrigger value="hero">Hero</TabsTrigger>
-            <TabsTrigger value="features">Features</TabsTrigger>
-            <TabsTrigger value="pricing">Pricing</TabsTrigger>
-            <TabsTrigger value="testimonials">Testimonials</TabsTrigger>
+            </

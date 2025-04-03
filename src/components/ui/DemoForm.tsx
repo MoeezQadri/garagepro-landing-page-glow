@@ -6,15 +6,19 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
+import { useContact, ContactSubmission } from "@/hooks/useContact";
 
 const DemoForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
+  const { useSubmitContact } = useContact();
+  const { mutate: submitContact, isPending } = useSubmitContact();
+  
+  const [formData, setFormData] = useState<ContactSubmission & { agreeToTerms: boolean }>({
     name: "",
     email: "",
     phone: "",
-    companyName: "",
-    companySize: "",
+    company_name: "",
+    company_size: "",
+    message: "Requesting a demo",
     agreeToTerms: false
   });
 
@@ -26,21 +30,22 @@ const DemoForm = () => {
       return;
     }
     
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      toast.success("Thank you! A member of our team will contact you shortly.");
-      setIsSubmitting(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        companyName: "",
-        companySize: "",
-        agreeToTerms: false
-      });
-    }, 1500);
+    // Submit to Supabase
+    const { agreeToTerms, ...submission } = formData;
+    submitContact(submission, {
+      onSuccess: () => {
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company_name: "",
+          company_size: "",
+          message: "Requesting a demo",
+          agreeToTerms: false
+        });
+      }
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,29 +84,27 @@ const DemoForm = () => {
           <Input
             id="phone"
             name="phone"
-            required
             value={formData.phone}
             onChange={handleChange}
             placeholder="(555) 123-4567"
           />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="companyName">Business Name</Label>
+          <Label htmlFor="company_name">Business Name</Label>
           <Input
-            id="companyName"
-            name="companyName"
-            required
-            value={formData.companyName}
+            id="company_name"
+            name="company_name"
+            value={formData.company_name}
             onChange={handleChange}
             placeholder="Your Garage Name"
           />
         </div>
       </div>
       <div className="space-y-2">
-        <Label htmlFor="companySize">Business Size</Label>
+        <Label htmlFor="company_size">Business Size</Label>
         <Select
-          value={formData.companySize}
-          onValueChange={(value) => setFormData(prev => ({ ...prev, companySize: value }))}
+          value={formData.company_size}
+          onValueChange={(value) => setFormData(prev => ({ ...prev, company_size: value }))}
         >
           <SelectTrigger>
             <SelectValue placeholder="Select business size" />
@@ -130,9 +133,9 @@ const DemoForm = () => {
       <Button 
         type="submit" 
         className="w-full bg-garage-600 hover:bg-garage-700 text-white" 
-        disabled={isSubmitting}
+        disabled={isPending}
       >
-        {isSubmitting ? "Submitting..." : "Schedule My Demo"}
+        {isPending ? "Submitting..." : "Schedule My Demo"}
       </Button>
     </form>
   );
