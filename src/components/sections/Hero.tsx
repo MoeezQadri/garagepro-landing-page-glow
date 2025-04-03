@@ -1,18 +1,28 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useCMS } from "@/contexts/CMSContext";
 
 const Hero = () => {
+  const { content } = useCMS();
+  const { hero } = content;
+  
   return (
     <section className="pt-32 pb-20 hero-gradient relative overflow-hidden">
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Streamline Your <span className="heading-gradient">Garage Management</span> Business
+              {hero.title?.includes("Garage") ? (
+                <>
+                  {hero.title.split("Garage")[0]} <span className="heading-gradient">Garage Management</span> {hero.title.split("Garage Management")[1]}
+                </>
+              ) : (
+                hero.title
+              )}
             </h1>
             <p className="text-xl text-muted-foreground max-w-lg">
-              The all-in-one platform for auto shops to manage inventory, appointments, billing, and customer relationships.
+              {hero.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button 
@@ -20,7 +30,7 @@ const Hero = () => {
                 className="bg-garage-600 hover:bg-garage-700 text-white"
                 onClick={() => document.getElementById('book-demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Book a Demo <ArrowRight size={16} className="ml-2" />
+                {hero.buttonText} <ArrowRight size={16} className="ml-2" />
               </Button>
               <Button 
                 size="lg" 
@@ -37,7 +47,7 @@ const Hero = () => {
                 <div className="w-8 h-8 rounded-full bg-garage-600 border-2 border-white flex items-center justify-center text-xs text-white font-medium">KL</div>
               </div>
               <p className="text-sm text-muted-foreground">
-                Trusted by <span className="font-medium text-foreground">2,000+</span> garage owners
+                Trusted by <span className="font-medium text-foreground">{hero.stats?.[0]?.value || "2,000+"}</span> {hero.stats?.[0]?.label || "garage owners"}
               </p>
             </div>
           </div>
@@ -45,7 +55,7 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-garage-400/10 to-garage-600/10 rounded-xl"></div>
             <div className="rounded-xl border border-border overflow-hidden shadow-xl">
               <img
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1000"
+                src={hero.imageUrl}
                 alt="GaragePro Dashboard"
                 className="w-full rounded-xl"
               />

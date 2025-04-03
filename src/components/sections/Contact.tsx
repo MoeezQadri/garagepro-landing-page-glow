@@ -1,18 +1,22 @@
 
 import { Mail, Phone, MapPin } from "lucide-react";
 import DemoForm from "../ui/DemoForm";
+import { useCMS } from "@/contexts/CMSContext";
 
 const Contact = () => {
+  const { content } = useCMS();
+  const { contact } = content;
+  
   return (
     <section id="contact" className="py-20">
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to <span className="heading-gradient">Transform</span> Your Auto Shop?
+              {contact.title?.split("Transform")[0] || "Ready to"} <span className="heading-gradient">Transform</span> {contact.title?.split("Transform")[1] || "Your Auto Shop?"}
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Schedule a personalized demo to see how GaragePro can streamline your operations and boost your profitability.
+              {contact.description}
             </p>
             
             <div className="space-y-6 mb-10">
@@ -20,14 +24,14 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-garage-600 mt-1" />
                 <div>
                   <h3 className="font-medium">Email Us</h3>
-                  <p className="text-muted-foreground">sales@garagepro.com</p>
+                  <p className="text-muted-foreground">{contact.email}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
                 <Phone className="w-6 h-6 text-garage-600 mt-1" />
                 <div>
                   <h3 className="font-medium">Call Us</h3>
-                  <p className="text-muted-foreground">(555) 123-4567</p>
+                  <p className="text-muted-foreground">{contact.phone}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -35,9 +39,11 @@ const Contact = () => {
                 <div>
                   <h3 className="font-medium">Visit Us</h3>
                   <p className="text-muted-foreground">
-                    1234 Auto Avenue<br />
-                    Suite 500<br />
-                    Detroit, MI 48226
+                    {contact.address.map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}<br />
+                      </React.Fragment>
+                    ))}
                   </p>
                 </div>
               </div>
@@ -46,7 +52,7 @@ const Contact = () => {
             <div className="p-6 bg-garage-50 border border-garage-100 rounded-xl">
               <h3 className="font-medium mb-2">Our Guarantee</h3>
               <p className="text-muted-foreground">
-                If GaragePro doesn't improve your garage's efficiency within 90 days, we'll refund your subscription fee. No questions asked.
+                {contact.guarantee}
               </p>
             </div>
           </div>
