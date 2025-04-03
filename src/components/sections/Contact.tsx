@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import DemoForm from "../ui/DemoForm";
 import { useCMS } from "@/contexts/CMSContext";
