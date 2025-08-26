@@ -85,7 +85,7 @@ const defaultContent: CMSContent = {
     subtitle: "",
     description: "The all-in-one platform for auto shops to manage inventory, appointments, billing, and customer relationships.",
     buttonText: "Book a Demo",
-    imageUrl: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=1000",
+    imageUrl: "/src/assets/garage-management-hero.jpg",
     stats: [
       { label: "garage owners", value: "2,000+" }
     ]
