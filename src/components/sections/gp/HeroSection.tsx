@@ -4,23 +4,25 @@ import { APP_SIGNUP_URL } from "@/lib/links";
 
 const HeroSection = () => {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
-      {/* Dark gradient hero background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-garage-950 via-garage-900 to-garage-800">
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-garage-700/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-garage-700/30 via-transparent to-transparent" />
-      </div>
+    <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-garage-50 via-white to-garage-100">
+      {/* Subtle blueprint grid texture */}
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, rgba(18,40,63,0.5) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(18,40,63,0.5) 0 1px, transparent 1px 40px)",
+        }}
+      />
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
-            <div className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-sm bg-primary/15 border border-primary/40 text-primary text-xs font-medium uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-sm bg-primary/15 border border-primary/40 text-foreground text-xs font-medium uppercase tracking-wider">
               Built for independent shops
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-foreground">
               Run your shop.{" "}
               <span className="text-primary">We'll handle the paperwork.</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/80 max-w-xl">
+            <p className="text-lg md:text-xl text-foreground/80 max-w-xl">
               Invoicing, job tracking, inventory, and technician performance — all included from day one. No upgrade required to see your own job board.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -38,12 +40,12 @@ const HeroSection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white"
+                className="border-foreground/40 bg-transparent text-foreground hover:bg-foreground/10 hover:text-foreground"
               >
                 <a href="#pricing">See Pricing</a>
               </Button>
             </div>
-            <p className="text-sm text-white/70 pt-1">
+            <p className="text-sm text-foreground/70 pt-1">
               No credit card required · Cancel anytime
             </p>
           </div>
