@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container px-4 md:px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
           <div className="text-mint-100">
-            <Logo textClassName="text-white" />
+            <Logo invert />
             <p className="text-mint-300 mt-4 max-w-sm text-sm leading-relaxed">
               Auto repair shop software built for independent shops. Run the shop, keep customers coming back, grow without the busywork.
             </p>
