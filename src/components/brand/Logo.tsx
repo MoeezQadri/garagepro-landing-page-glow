@@ -1,21 +1,27 @@
+import fullLogo from "@/assets/garagepro-logo.png.asset.json";
+import markLogo from "@/assets/garagepro-mark.png.asset.json";
+
 interface LogoProps {
   className?: string;
   showText?: boolean;
+  /** Invert for dark backgrounds (renders logo in white via CSS filter). */
+  invert?: boolean;
+  /** Ignored — kept for backwards compatibility with existing call sites. */
   textClassName?: string;
 }
 
-const Logo = ({ className = "", showText = true, textClassName = "" }: LogoProps) => {
+const Logo = ({ className = "", showText = true, invert = false }: LogoProps) => {
+  const filterStyle = invert ? { filter: "invert(1) brightness(2)" } : undefined;
+  const src = showText ? fullLogo.url : markLogo.url;
+
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      <div className="w-10 h-10 rounded-full border-2 border-current flex items-center justify-center">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 9C14 7 12 12 10 15C8 18 6 15 6 15" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" fill="none" />
-          <path d="M12 12V21" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" fill="none" />
-        </svg>
-      </div>
-      {showText && (
-        <span className={`text-xl font-bold tracking-wide ${textClassName}`}>GARAGEPRO</span>
-      )}
+    <div className={`flex items-center ${className}`}>
+      <img
+        src={src}
+        alt="GaragePro"
+        style={filterStyle}
+        className={showText ? "h-8 md:h-9 w-auto" : "h-9 w-9"}
+      />
     </div>
   );
 };
