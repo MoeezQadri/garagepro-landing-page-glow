@@ -1,28 +1,39 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ClipboardList, Wrench, FileText } from "lucide-react";
 import { APP_SIGNUP_URL } from "@/lib/links";
+import heroShop from "@/assets/hero-shop.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 hero-gradient relative overflow-hidden">
+    <section className="relative pt-32 pb-20 overflow-hidden">
+      {/* Background photo + navy overlay */}
+      <div className="absolute inset-0 -z-10">
+        <img
+          src={heroShop}
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-mint-900/95 via-mint-900/85 to-mint-900/40" />
+      </div>
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
-            <div className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-mint-100 border border-mint-200 text-mint-800 text-xs font-medium">
+            <div className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-sm bg-primary/15 border border-primary/40 text-primary text-xs font-medium uppercase tracking-wider">
               Built for independent shops
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-mint-950">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-white">
               Run your shop.{" "}
-              <span className="heading-gradient">We'll handle the paperwork.</span>
+              <span className="text-primary">We'll handle the paperwork.</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
+            <p className="text-lg md:text-xl text-white/80 max-w-xl">
               Invoicing, job tracking, inventory, and technician performance — all included from day one. No upgrade required to see your own job board.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button
                 asChild
                 size="lg"
-                className="bg-mint-700 hover:bg-mint-800 text-white"
+                className="btn-signage bg-primary hover:bg-primary/90 text-primary-foreground"
               >
                 <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
                   Start Free — 14 Days, Full Access
@@ -33,19 +44,19 @@ const HeroSection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-mint-400 text-mint-800 hover:bg-mint-50"
+                className="border-white/40 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
                 <a href="#pricing">See Pricing</a>
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground pt-1">
+            <p className="text-sm text-white/70 pt-1">
               No credit card required · Cancel anytime
             </p>
           </div>
 
           {/* Visual: mock job board on a shop-floor tablet */}
           <div className="relative animate-fade-in-right">
-            <div className="relative rounded-2xl border border-mint-200 bg-white shadow-xl overflow-hidden">
+            <div className="relative rounded-sm border-2 border-mint-950 bg-white overflow-hidden" style={{ boxShadow: "10px 10px 0 hsl(var(--primary))" }}>
               <div className="px-5 py-3 border-b border-mint-100 bg-mint-50 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-mint-900 font-semibold">
                   <ClipboardList size={18} />
