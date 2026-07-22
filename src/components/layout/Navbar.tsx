@@ -26,11 +26,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur shadow-sm py-3" : "bg-transparent py-5"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur shadow-sm py-3 transition-all duration-300">
       <div className="container flex items-center justify-between">
         <a href="#" className="text-mint-800">
           <Logo />
@@ -42,7 +38,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground/80" : "text-white/90"}`}
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
             >
               {link.label}
             </a>
@@ -51,7 +47,7 @@ const Navbar = () => {
             href={BLOG_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground/80" : "text-white/90"}`}
+            className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
           >
             Blog
           </a>
@@ -64,7 +60,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden p-2 ${isScrolled ? "text-foreground" : "text-white"}`}
+          className="md:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
