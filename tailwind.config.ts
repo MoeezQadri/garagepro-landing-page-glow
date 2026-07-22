@@ -56,7 +56,7 @@ export default {
 				garage: {
 					50: '#eef2f5',
 					100: '#dde5ec',
-					200: '#c1ced b'.replace(' ',''),
+					200: '#c1cedb',
 					300: '#94a9bd',
 					400: '#607e99',
 					500: '#3d5c7a',
