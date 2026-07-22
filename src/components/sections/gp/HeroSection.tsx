@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ClipboardList, Wrench, FileText } from "lucide-react";
 import { APP_SIGNUP_URL } from "@/lib/links";
-import heroShop from "@/assets/hero-shop.jpg";
 
 const HeroSection = () => {
   return (
