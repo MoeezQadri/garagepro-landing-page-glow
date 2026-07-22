@@ -20,7 +20,7 @@ const Logo = ({ className = "", showText = true, invert = false }: LogoProps) =>
         src={src}
         alt="GaragePro"
         style={filterStyle}
-        className={showText ? "h-12 md:h-14 w-auto" : "h-12 w-12"}
+        className={showText ? "h-16 md:h-20 w-auto" : "h-14 w-14"}
       />
     </div>
   );

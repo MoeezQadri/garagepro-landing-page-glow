@@ -31,10 +31,10 @@ const SolutionSection = () => {
           {columns.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
-              className="rounded-2xl bg-white border border-mint-100 p-8 shadow-sm hover:shadow-md transition-shadow"
+              className="feature-card"
             >
-              <div className="w-12 h-12 rounded-xl bg-mint-100 flex items-center justify-center text-mint-700 mb-5">
-                <Icon size={22} />
+              <div className="w-12 h-12 rounded-sm bg-mint-950 flex items-center justify-center text-primary mb-5 border-2 border-mint-950">
+                <Icon size={22} strokeWidth={2.25} />
               </div>
               <h3 className="text-xl font-semibold text-mint-950 mb-3">{title}</h3>
               <p className="text-muted-foreground leading-relaxed">{body}</p>

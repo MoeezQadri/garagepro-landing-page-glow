@@ -42,7 +42,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 hover:text-mint-700 transition-colors"
+              className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground/80" : "text-white/90"}`}
             >
               {link.label}
             </a>
@@ -51,11 +51,11 @@ const Navbar = () => {
             href={BLOG_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-foreground/80 hover:text-mint-700 transition-colors"
+            className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? "text-foreground/80" : "text-white/90"}`}
           >
             Blog
           </a>
-          <Button asChild className="bg-mint-700 hover:bg-mint-800 text-white">
+          <Button asChild className="btn-signage bg-primary hover:bg-primary/90 text-primary-foreground">
             <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
               Start Free
             </a>
@@ -64,7 +64,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-foreground p-2"
+          className={`md:hidden p-2 ${isScrolled ? "text-foreground" : "text-white"}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >

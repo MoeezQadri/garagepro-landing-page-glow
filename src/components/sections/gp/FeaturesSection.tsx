@@ -47,10 +47,10 @@ const FeaturesSection = () => {
           {features.map(({ icon: Icon, title, body, tag }) => (
             <div
               key={title}
-              className="rounded-xl border border-mint-100 bg-white p-6 hover:border-mint-300 hover:shadow-sm transition-all"
+              className="feature-card"
             >
-              <div className="w-11 h-11 rounded-lg bg-mint-100 flex items-center justify-center text-mint-700 mb-4">
-                <Icon size={20} />
+              <div className="w-12 h-12 rounded-sm bg-mint-950 flex items-center justify-center text-primary mb-4 border-2 border-mint-950">
+                <Icon size={22} strokeWidth={2.25} />
               </div>
               <div className="flex items-start justify-between gap-2 mb-2">
                 <h3 className="text-lg font-semibold text-mint-950">{title}</h3>
