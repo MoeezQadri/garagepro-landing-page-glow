@@ -22,7 +22,7 @@ const HeroSection = () => {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-foreground">
               Run your shop.{" "}
-              <span className="text-foreground/60">We'll handle the paperwork.</span>
+              <span style={{ color: "hsl(var(--brand-accent))" }}>We'll handle the paperwork.</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 max-w-xl">
               Invoicing, job tracking, inventory, and technician performance — all included from day one. No upgrade required to see your own job board.
