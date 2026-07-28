@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { APP_SIGNUP_URL } from "@/lib/links";
 
 const FinalCTASection = () => {

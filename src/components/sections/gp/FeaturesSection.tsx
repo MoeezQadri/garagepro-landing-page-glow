@@ -1,4 +1,11 @@
-import { ClipboardList, FileText, Timer, Boxes, BellRing, BarChart3 } from "lucide-react";
+import {
+  ClipboardText as ClipboardList,
+  FileText,
+  Timer,
+  Stack as Boxes,
+  BellRinging as BellRing,
+  ChartBar as BarChart3,
+} from "@phosphor-icons/react";
 
 const features = [
   {
@@ -49,8 +56,8 @@ const FeaturesSection = () => {
               key={title}
               className="feature-card"
             >
-              <div className="w-12 h-12 rounded-2xl border border-border bg-muted/40 flex items-center justify-center text-foreground mb-4">
-                <Icon size={22} strokeWidth={1.5} />
+              <div className="w-12 h-12 rounded-2xl border border-border bg-muted/40 flex items-center justify-center mb-4" style={{ color: "hsl(var(--brand-accent))" }}>
+                <Icon size={24} weight="duotone" />
               </div>
               <div className="flex items-start justify-between gap-2 mb-2">
                 <h3 className="text-lg font-semibold text-mint-950">{title}</h3>

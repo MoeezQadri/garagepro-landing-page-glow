@@ -1,4 +1,4 @@
-import { Wrench, PhoneCall, TrendingUp } from "lucide-react";
+import { Wrench, PhoneCall, TrendUp as TrendingUp } from "@phosphor-icons/react";
 
 const columns = [
   {
@@ -34,7 +34,7 @@ const SolutionSection = () => {
               className="feature-card"
             >
               <div className="w-12 h-12 rounded-2xl border border-border bg-muted/40 flex items-center justify-center mb-5" style={{ color: "hsl(var(--brand-accent))" }}>
-                <Icon size={22} strokeWidth={1.5} />
+                <Icon size={24} weight="duotone" />
               </div>
               <h3 className="text-xl font-semibold text-mint-950 mb-3">{title}</h3>
               <p className="text-muted-foreground leading-relaxed">{body}</p>
