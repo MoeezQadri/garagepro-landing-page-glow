@@ -22,7 +22,7 @@ const HeroSection = () => {
       <div className="container relative px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 animate-fade-in">
-            <div className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 text-foreground/70 text-xs font-medium tracking-wide">
+            <div className="inline-flex items-center gap-2 self-start px-3 py-1 rounded-full bg-[hsl(var(--brand-accent-light))] border border-[hsl(var(--brand-accent))]/20 text-[hsl(var(--brand-accent-text))] text-xs font-medium tracking-wide">
               Built for independent shops
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-foreground">
