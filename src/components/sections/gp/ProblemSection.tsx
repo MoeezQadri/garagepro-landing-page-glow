@@ -21,8 +21,8 @@ const ProblemSection = () => {
               key={i}
               className="rounded-xl border border-mint-100 bg-mint-50/40 p-6 flex flex-col gap-3"
             >
-              <div className="w-10 h-10 rounded-full bg-white border border-mint-200 flex items-center justify-center text-mint-700">
-                <AlertTriangle size={18} />
+              <div className="w-10 h-10 rounded-2xl border border-border bg-muted/40 flex items-center justify-center" style={{ color: "hsl(var(--brand-accent))" }}>
+                <AlertTriangle size={18} strokeWidth={1.5} />
               </div>
               <p className="text-muted-foreground leading-relaxed">{text}</p>
             </div>

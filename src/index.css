@@ -37,6 +37,9 @@
     --ring: 0 0% 4%;
 
     --radius: 1rem;
+
+    /* Accent — warm rust for headings/highlights against B&W base */
+    --brand-accent: 18 74% 38%;
   }
 
   * {
