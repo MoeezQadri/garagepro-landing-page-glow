@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { Quotes as Quote } from "@phosphor-icons/react";
 
 const WhyGaragePro = () => {
   return (

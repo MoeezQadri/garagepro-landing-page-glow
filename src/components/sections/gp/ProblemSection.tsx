@@ -1,4 +1,4 @@
-import { AlertTriangle } from "lucide-react";
+import { Warning as AlertTriangle } from "@phosphor-icons/react";
 
 const problems = [
   "Job cards get lost. Invoices take too long. Nobody has clean numbers on what a job actually cost vs. what it billed.",
@@ -22,7 +22,7 @@ const ProblemSection = () => {
               className="rounded-xl border border-mint-100 bg-mint-50/40 p-6 flex flex-col gap-3"
             >
               <div className="w-10 h-10 rounded-2xl border border-border bg-muted/40 flex items-center justify-center" style={{ color: "hsl(var(--brand-accent))" }}>
-                <AlertTriangle size={18} strokeWidth={1.5} />
+                <AlertTriangle size={20} weight="duotone" />
               </div>
               <p className="text-muted-foreground leading-relaxed">{text}</p>
             </div>

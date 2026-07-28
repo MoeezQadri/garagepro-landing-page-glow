@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { List as Menu, X } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
 import { APP_SIGNUP_URL, BLOG_URL } from "@/lib/links";
 

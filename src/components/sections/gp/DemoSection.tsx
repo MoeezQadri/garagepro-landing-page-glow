@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play, Calendar, ArrowRight } from "lucide-react";
+import { Play, Calendar, ArrowRight } from "@phosphor-icons/react";
 import { CALENDLY_URL, APP_SIGNUP_URL } from "@/lib/links";
 
 const DemoSection = () => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, X } from "lucide-react";
+import { Check, X } from "@phosphor-icons/react";
 import { APP_SIGNUP_URL } from "@/lib/links";
 
 type Billing = "monthly" | "annual";

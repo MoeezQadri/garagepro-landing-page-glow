@@ -1,5 +1,5 @@
 
-import { Mail } from "lucide-react";
+import { EnvelopeSimple as Mail } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
 import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL } from "@/lib/links";
 
