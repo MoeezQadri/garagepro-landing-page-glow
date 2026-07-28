@@ -30,7 +30,7 @@ const ProblemSection = () => {
               key={i}
               className="rounded-xl border border-mint-100 bg-mint-50/40 p-6 flex flex-col gap-3"
             >
-              <div className="w-10 h-10 rounded-2xl border border-border bg-muted/40 flex items-center justify-center" style={{ color: "hsl(var(--brand-accent))" }}>
+              <div className="w-10 h-10 rounded-2xl border flex items-center justify-center" style={{ color: "#b7410e", borderColor: "#b7410e33", backgroundColor: "#b7410e14" }}>
                 <Icon size={22} weight="duotone" />
               </div>
               <p className="text-muted-foreground leading-relaxed">{text}</p>
