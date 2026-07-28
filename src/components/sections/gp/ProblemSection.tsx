@@ -1,9 +1,18 @@
-import { Warning as AlertTriangle } from "@phosphor-icons/react";
+import { FileX, PhoneSlash, LockKey, type Icon as PhosphorIcon } from "@phosphor-icons/react";
 
-const problems = [
-  "Job cards get lost. Invoices take too long. Nobody has clean numbers on what a job actually cost vs. what it billed.",
-  "Customers ghost on estimates, no-show appointments, and you don't find out they left until they're already gone.",
-  "Every \u201Call-in-one\u201D shop platform either costs more than it should, or hides the features you actually need behind a second, pricier plan.",
+const problems: { icon: PhosphorIcon; text: string }[] = [
+  {
+    icon: FileX,
+    text: "Job cards get lost. Invoices take too long. Nobody has clean numbers on what a job actually cost vs. what it billed.",
+  },
+  {
+    icon: PhoneSlash,
+    text: "Customers ghost on estimates, no-show appointments, and you don't find out they left until they're already gone.",
+  },
+  {
+    icon: LockKey,
+    text: "Every \u201Call-in-one\u201D shop platform either costs more than it should, or hides the features you actually need behind a second, pricier plan.",
+  },
 ];
 
 const ProblemSection = () => {
@@ -16,13 +25,13 @@ const ProblemSection = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {problems.map((text, i) => (
+          {problems.map(({ icon: Icon, text }, i) => (
             <div
               key={i}
               className="rounded-xl border border-mint-100 bg-mint-50/40 p-6 flex flex-col gap-3"
             >
               <div className="w-10 h-10 rounded-2xl border border-border bg-muted/40 flex items-center justify-center" style={{ color: "hsl(var(--brand-accent))" }}>
-                <AlertTriangle size={20} weight="duotone" />
+                <Icon size={22} weight="duotone" />
               </div>
               <p className="text-muted-foreground leading-relaxed">{text}</p>
             </div>
