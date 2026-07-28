@@ -14,10 +14,10 @@ const WhyGaragePro = () => {
             </p>
           </div>
 
-          <div className="rounded-2xl border-2 border-mint-300 bg-gradient-to-br from-mint-50 to-white p-8 md:p-10 shadow-sm">
-            <p className="text-lg md:text-xl font-medium text-mint-950 leading-snug">
+          <div className="rounded-2xl border border-border bg-muted/50 p-8 md:p-10 shadow-sm">
+            <p className="text-lg md:text-xl font-medium text-foreground leading-snug">
               Most shop software makes you pay their higher tier just to see your own job board or track technician performance.{" "}
-              <span className="text-mint-700">GaragePro includes both from your first paid plan.</span>
+              <span className="text-foreground/60">GaragePro includes both from your first paid plan.</span>
             </p>
           </div>
 

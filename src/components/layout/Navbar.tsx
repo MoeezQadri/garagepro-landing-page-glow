@@ -40,7 +40,7 @@ const Navbar = () => {
           >
             Blog
           </a>
-          <Button asChild className="btn-signage bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button asChild className="btn-signage bg-foreground hover:bg-foreground/90 text-background">
             <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
               Start Free
             </a>
@@ -80,7 +80,7 @@ const Navbar = () => {
             >
               Blog
             </a>
-            <Button asChild className="w-full bg-mint-700 hover:bg-mint-800 text-white">
+            <Button asChild className="w-full rounded-full bg-foreground hover:bg-foreground/90 text-background">
               <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
                 Start Free
               </a>

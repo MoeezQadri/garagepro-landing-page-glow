@@ -49,7 +49,7 @@ const FeaturesSection = () => {
               key={title}
               className="feature-card"
             >
-              <div className="w-12 h-12 rounded-sm bg-mint-950 flex items-center justify-center text-primary mb-4 border-2 border-mint-950">
+              <div className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center text-background mb-4">
                 <Icon size={22} strokeWidth={2.25} />
               </div>
               <div className="flex items-start justify-between gap-2 mb-2">

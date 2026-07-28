@@ -16,7 +16,7 @@ const FinalCTASection = () => {
           <Button
             asChild
             size="lg"
-            className="bg-white text-mint-900 hover:bg-mint-100"
+            className="btn-signage bg-white text-foreground hover:bg-white/90"
           >
             <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
               Start Free — 14 Days, Full Access

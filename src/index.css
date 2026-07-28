@@ -3,40 +3,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hard Bento — Blueprint & Bolt: navy tiles, bolt-orange CTAs, industrial typography */
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hind:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Minimal Mono — black & white, curvy modern shapes, soft shadows */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Hind:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 210 22% 95%;
-    --foreground: 212 55% 16%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
 
     --card: 0 0% 100%;
-    --card-foreground: 212 55% 16%;
+    --card-foreground: 0 0% 4%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 212 55% 16%;
+    --popover-foreground: 0 0% 4%;
 
-    --primary: 21 82% 49%;
+    --primary: 0 0% 4%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 212 55% 16%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 4%;
 
-    --muted: 210 18% 90%;
-    --muted-foreground: 212 20% 38%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 208 57% 42%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 212 20% 82%;
-    --input: 212 20% 82%;
-    --ring: 21 82% 49%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 4%;
 
-    --radius: 0.25rem;
+    --radius: 1rem;
   }
 
   * {
@@ -51,58 +51,49 @@
 
   h1, h2, h3, h4, .font-display {
     font-family: 'Archivo Black', 'Hind', sans-serif;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .heading-gradient {
-    @apply text-mint-700;
+    @apply text-foreground;
   }
 
   .hero-gradient {
-    background:
-      linear-gradient(hsl(var(--background)), hsl(var(--background))),
-      repeating-linear-gradient(0deg, rgba(18,40,63,0.06) 0 1px, transparent 1px 40px),
-      repeating-linear-gradient(90deg, rgba(18,40,63,0.06) 0 1px, transparent 1px 40px);
-    background-blend-mode: multiply;
+    @apply bg-background;
   }
 
   .feature-card {
-    @apply rounded-sm border-2 border-mint-800 bg-white p-6 transition-all;
-    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    @apply rounded-2xl border border-border bg-card p-6 transition-all shadow-sm;
   }
   .feature-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 hsl(var(--foreground));
+    @apply shadow-md -translate-y-0.5;
   }
 
   .pricing-card {
-    @apply rounded-sm border-2 border-mint-800 bg-white p-8 transition-all;
-    box-shadow: 6px 6px 0 hsl(var(--foreground));
+    @apply rounded-2xl border border-border bg-card p-8 transition-all shadow-sm;
   }
 
   .pricing-card-highlight {
-    @apply bg-mint-800 text-white border-mint-700;
+    @apply bg-foreground text-background border-foreground;
   }
 
   .testimonial-card {
-    @apply rounded-sm border-2 border-mint-800 bg-white p-6;
+    @apply rounded-2xl border border-border bg-card p-6 shadow-sm;
   }
 
-  /* Signage-shadow CTA effect */
+  /* Modern rounded CTA */
   .btn-signage {
-    box-shadow: 4px 4px 0 hsl(var(--foreground));
-    transition: transform 120ms ease, box-shadow 120ms ease;
+    @apply rounded-full shadow-sm;
+    transition: transform 150ms ease, box-shadow 150ms ease;
   }
   .btn-signage:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 5px 5px 0 hsl(var(--foreground));
+    @apply shadow-md;
+    transform: translateY(-1px);
   }
   .btn-signage:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 hsl(var(--foreground));
+    transform: translateY(0);
   }
 }
 
