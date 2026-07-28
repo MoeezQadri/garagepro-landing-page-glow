@@ -166,10 +166,10 @@ const PricingSection = () => {
 
                 <Button
                   asChild
-                  className={`mt-auto w-full ${
+                  className={`mt-auto w-full rounded-full ${
                     plan.highlight
-                      ? "bg-mint-700 hover:bg-mint-800 text-white"
-                      : "bg-mint-950 hover:bg-mint-900 text-white"
+                      ? "bg-background text-foreground hover:bg-background/90"
+                      : "bg-foreground text-background hover:bg-foreground/90"
                   }`}
                 >
                   <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">

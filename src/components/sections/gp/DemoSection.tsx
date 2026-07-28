@@ -34,7 +34,7 @@ const DemoSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Button
               size="lg"
-              className="bg-mint-700 hover:bg-mint-800 text-white"
+              className="btn-signage bg-foreground hover:bg-foreground/90 text-background"
             >
               <Play size={16} className="mr-2" />
               Watch the 2-Minute Demo
@@ -43,7 +43,7 @@ const DemoSection = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-mint-400 text-mint-800 hover:bg-mint-50"
+              className="rounded-full border-foreground/30 text-foreground hover:bg-muted"
             >
               <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
                 <Calendar size={16} className="mr-2" />
