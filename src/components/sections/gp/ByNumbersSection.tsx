@@ -23,7 +23,7 @@ const stats = [
 
 const ByNumbersSection = () => {
   return (
-    <section className="py-20 bg-mint-950 text-white">
+    <section className="py-20 bg-foreground text-background">
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold">
@@ -34,15 +34,19 @@ const ByNumbersSection = () => {
           {stats.map((s, i) => (
             <div
               key={i}
-              className="rounded-2xl bg-mint-900/40 border border-mint-800 p-6 flex flex-col gap-3"
+              className="rounded-2xl border border-background/20 bg-background p-5 flex flex-col gap-4"
             >
-              <div className="text-4xl md:text-5xl font-bold text-mint-200">{s.value}</div>
-              <p className="text-mint-100/90 leading-relaxed text-sm">{s.body}</p>
-              {s.note && (
-                <span className="text-[11px] uppercase tracking-wide text-mint-400 mt-auto">
-                  {s.note}
-                </span>
-              )}
+              <div className="inline-flex self-start rounded-xl border border-border bg-muted px-4 py-2">
+                <span className="text-3xl md:text-4xl font-bold text-foreground">{s.value}</span>
+              </div>
+              <div className="flex-1 flex flex-col gap-3">
+                <p className="text-foreground/90 leading-relaxed text-sm">{s.body}</p>
+                {s.note && (
+                  <span className="text-[11px] uppercase tracking-wide text-muted-foreground mt-auto">
+                    {s.note}
+                  </span>
+                )}
+              </div>
             </div>
           ))}
         </div>
