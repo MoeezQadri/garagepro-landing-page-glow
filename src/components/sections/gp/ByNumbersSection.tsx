@@ -36,10 +36,12 @@ const ByNumbersSection = () => {
               key={i}
               className="rounded-2xl border border-background/20 bg-background p-5 flex flex-col gap-4"
             >
-              <div className="inline-flex self-start rounded-xl border border-border bg-muted px-4 py-2">
-                <span className="text-3xl md:text-4xl font-bold text-foreground">{s.value}</span>
+              <div className="flex justify-center">
+                <div className="rounded-xl border border-[hsl(var(--brand-accent))]/20 bg-[hsl(var(--brand-accent-light))] px-4 py-2">
+                  <span className="text-3xl md:text-4xl font-bold text-[hsl(var(--brand-accent-text))]">{s.value}</span>
+                </div>
               </div>
-              <div className="flex-1 flex flex-col gap-3">
+              <div className="flex-1 flex flex-col gap-3 text-center">
                 <p className="text-foreground/90 leading-relaxed text-sm">{s.body}</p>
                 {s.note && (
                   <span className="text-[11px] uppercase tracking-wide text-muted-foreground mt-auto">

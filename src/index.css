@@ -40,6 +40,8 @@
 
     /* Accent — forest green for headings/highlights against B&W base */
     --brand-accent: 145 45% 24%;
+    --brand-accent-light: 145 40% 92%;
+    --brand-accent-text: 145 45% 18%;
   }
 
   * {
