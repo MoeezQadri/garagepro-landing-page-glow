@@ -17,7 +17,9 @@ interface Plan {
   cta: string;
   highlight?: boolean;
   note?: string;
+  planKey: string;
 }
+
 
 const plans: Plan[] = [
   {
