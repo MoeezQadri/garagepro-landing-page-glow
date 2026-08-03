@@ -182,7 +182,7 @@ const PricingSection = () => {
                       : "bg-foreground text-background hover:bg-foreground/90"
                   }`}
                 >
-                  <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                  <a href={subscribeUrl} target="_blank" rel="noopener noreferrer">
                     {plan.cta}
                   </a>
                 </Button>
