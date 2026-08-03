@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Play, Calendar, ArrowRight } from "@phosphor-icons/react";
-import { CALENDLY_URL, APP_SIGNUP_URL } from "@/lib/links";
+import { CALENDLY_URL, APP_SUBSCRIBE_URL } from "@/lib/links";
 
 const DemoSection = () => {
   return (
@@ -54,7 +54,7 @@ const DemoSection = () => {
 
           <div className="mt-8 text-center">
             <a
-              href={APP_SIGNUP_URL}
+              href={APP_SUBSCRIBE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-mint-700 hover:text-mint-900 font-medium"

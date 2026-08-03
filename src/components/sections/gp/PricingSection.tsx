@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "@phosphor-icons/react";
-import { APP_SIGNUP_URL } from "@/lib/links";
+import { APP_SUBSCRIBE_URL, getPlanSubscribeUrl } from "@/lib/links";
 
 type Billing = "monthly" | "annual";
 
@@ -17,7 +17,9 @@ interface Plan {
   cta: string;
   highlight?: boolean;
   note?: string;
+  planKey: string;
 }
+
 
 const plans: Plan[] = [
   {
@@ -28,6 +30,7 @@ const plans: Plan[] = [
     blurb: "14-day full access, every feature unlocked",
     includes: ["Every feature", "14 days full access", "No credit card required"],
     cta: "Start Free Trial",
+    planKey: "free",
   },
   {
     name: "Basic",
@@ -45,6 +48,7 @@ const plans: Plan[] = [
     ],
     excludes: ["Automated reminders", "SMS/email delivery", "Review requests"],
     cta: "Get Started",
+    planKey: "basic",
   },
   {
     name: "Professional",
@@ -60,6 +64,7 @@ const plans: Plan[] = [
     ],
     cta: "Get Started",
     highlight: true,
+    planKey: "professional",
   },
   {
     name: "Enterprise",
@@ -76,6 +81,7 @@ const plans: Plan[] = [
     ],
     cta: "Get Started",
     note: "Priced for the full growth toolkit — a small team wanting complete automation belongs here too, not just large operations.",
+    planKey: "enterprise",
   },
 ];
 
@@ -120,6 +126,10 @@ const PricingSection = () => {
           {plans.map((plan) => {
             const price = billing === "annual" ? plan.annual : plan.monthly;
             const showPerMonth = plan.monthly !== "$0";
+            const subscribeUrl =
+              plan.name === "Free"
+                ? APP_SUBSCRIBE_URL
+                : getPlanSubscribeUrl(plan.planKey);
             return (
               <div
                 key={plan.name}
@@ -172,7 +182,7 @@ const PricingSection = () => {
                       : "bg-foreground text-background hover:bg-foreground/90"
                   }`}
                 >
-                  <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                  <a href={subscribeUrl} target="_blank" rel="noopener noreferrer">
                     {plan.cta}
                   </a>
                 </Button>

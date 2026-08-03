@@ -5,7 +5,7 @@ import {
   Wrench,
   FileText,
 } from "@phosphor-icons/react";
-import { APP_SIGNUP_URL } from "@/lib/links";
+import { APP_SUBSCRIBE_URL } from "@/lib/links";
 import heroShop from "@/assets/hero-shop.jpg";
 
 const HeroSection = () => {
@@ -38,7 +38,7 @@ const HeroSection = () => {
                 size="lg"
                 className="btn-signage bg-foreground hover:bg-foreground/90 text-background"
               >
-                <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                <a href={APP_SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer">
                   Start Free — 14 Days, Full Access
                   <ArrowRight size={16} className="ml-2" />
                 </a>

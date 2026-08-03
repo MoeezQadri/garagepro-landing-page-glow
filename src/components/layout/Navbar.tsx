@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { List as Menu, X } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
-import { APP_SIGNUP_URL, BLOG_URL } from "@/lib/links";
+import { APP_SUBSCRIBE_URL, BLOG_URL } from "@/lib/links";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -41,7 +41,7 @@ const Navbar = () => {
             Blog
           </a>
           <Button asChild className="btn-signage bg-foreground hover:bg-foreground/90 text-background">
-            <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+            <a href={APP_SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer">
               Start Free
             </a>
           </Button>
@@ -81,7 +81,7 @@ const Navbar = () => {
               Blog
             </a>
             <Button asChild className="w-full rounded-full bg-foreground hover:bg-foreground/90 text-background">
-              <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+              <a href={APP_SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer">
                 Start Free
               </a>
             </Button>
