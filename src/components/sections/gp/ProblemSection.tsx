@@ -3,15 +3,15 @@ import { PhoneSlash, Receipt, LockKey, type Icon as PhosphorIcon } from "@phosph
 const problems: { icon: PhosphorIcon; text: string }[] = [
   {
     icon: PhoneSlash,
-    text: "A customer no-shows or ghosts an estimate, and nothing catches it. By the time you notice they've stopped coming in, you have no idea if they're just busy or already gone \u2014 and nothing would have flagged it in time to bring them back.",
+    text: "A customer no-shows or ghosts an estimate, and nothing catches it. By the time you notice they've stopped coming in, it's too late to reach out and win them back.",
   },
   {
     icon: Receipt,
-    text: "You reconcile the month from memory, paper job cards, and a shoebox of receipts \u2014 so the number you land on is a guess, not a fact.",
+    text: "You reconcile the month from memory, paper job cards, and a shoebox of receipts, so the number you land on is a guess, not a fact.",
   },
   {
     icon: LockKey,
-    text: "You've looked at other shop software. Every option either costs more than a small shop can justify, or buries the parts you actually need \u2014 the job board, inventory, technician tracking \u2014 behind a second, pricier plan.",
+    text: "You've looked at other shop software. Every option either costs more than a small shop can justify, or buries the parts you actually need, like the job board, inventory, and technician tracking, behind a second, pricier plan.",
   },
 ];
 
