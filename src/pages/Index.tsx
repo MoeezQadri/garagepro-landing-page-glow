@@ -12,7 +12,7 @@ import DemoSection from "@/components/sections/gp/DemoSection";
 import PricingSection from "@/components/sections/gp/PricingSection";
 import FAQSection from "@/components/sections/gp/FAQSection";
 import FinalCTASection from "@/components/sections/gp/FinalCTASection";
-import { APP_SIGNUP_URL } from "@/lib/links";
+import { APP_SUBSCRIBE_URL } from "@/lib/links";
 
 const Index = () => {
   useEffect(() => {
@@ -69,7 +69,7 @@ const Index = () => {
         { "@type": "Offer", name: "Professional", price: "79", priceCurrency: "USD" },
         { "@type": "Offer", name: "Enterprise", price: "199", priceCurrency: "USD" },
       ],
-      url: APP_SIGNUP_URL,
+      url: APP_SUBSCRIBE_URL,
     };
 
     const scripts: HTMLScriptElement[] = [];

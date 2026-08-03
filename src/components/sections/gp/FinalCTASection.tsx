@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@phosphor-icons/react";
-import { APP_SIGNUP_URL } from "@/lib/links";
+import { APP_SUBSCRIBE_URL } from "@/lib/links";
 
 const FinalCTASection = () => {
   return (
@@ -18,7 +18,7 @@ const FinalCTASection = () => {
             size="lg"
             className="btn-signage bg-white text-foreground hover:bg-white/90"
           >
-            <a href={APP_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+            <a href={APP_SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer">
               Start Free — 14 Days, Full Access
               <ArrowRight size={16} className="ml-2" />
             </a>
