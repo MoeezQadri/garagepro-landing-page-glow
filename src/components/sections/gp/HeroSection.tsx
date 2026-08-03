@@ -30,7 +30,7 @@ const HeroSection = () => {
               <span style={{ color: "hsl(var(--brand-accent))" }}>Nothing locked behind an upgrade.</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 max-w-xl">
-              Invoicing, job tracking, inventory, and technician performance — all included from day one. No upgrade required to see your own job board.
+              Job board, invoicing, inventory, and technician performance are all included from day one. No upgrade required to see your own numbers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button

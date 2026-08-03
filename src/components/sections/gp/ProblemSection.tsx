@@ -1,17 +1,17 @@
-import { FileX, PhoneSlash, LockKey, type Icon as PhosphorIcon } from "@phosphor-icons/react";
+import { PhoneSlash, Receipt, LockKey, type Icon as PhosphorIcon } from "@phosphor-icons/react";
 
 const problems: { icon: PhosphorIcon; text: string }[] = [
   {
-    icon: FileX,
-    text: "Job cards get lost. Invoices take too long. Nobody has clean numbers on what a job actually cost vs. what it billed.",
+    icon: PhoneSlash,
+    text: "A customer no-shows or ghosts an estimate, and nothing catches it. By the time you notice they've stopped coming in, you have no idea if they're just busy or already gone \u2014 and nothing would have flagged it in time to bring them back.",
   },
   {
-    icon: PhoneSlash,
-    text: "Customers ghost on estimates, no-show appointments, and you don't find out they left until they're already gone.",
+    icon: Receipt,
+    text: "You reconcile the month from memory, paper job cards, and a shoebox of receipts \u2014 so the number you land on is a guess, not a fact.",
   },
   {
     icon: LockKey,
-    text: "Every \u201Call-in-one\u201D shop platform either costs more than it should, or hides the features you actually need behind a second, pricier plan.",
+    text: "You've looked at other shop software. Every option either costs more than a small shop can justify, or buries the parts you actually need \u2014 the job board, inventory, technician tracking \u2014 behind a second, pricier plan.",
   },
 ];
 
@@ -21,7 +21,7 @@ const ProblemSection = () => {
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-mint-950">
-            Still running your shop on paper, spreadsheets, and memory?
+            You already know what this is costing you.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">

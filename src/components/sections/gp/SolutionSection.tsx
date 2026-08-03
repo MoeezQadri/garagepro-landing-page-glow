@@ -1,20 +1,30 @@
-import { Wrench, PhoneCall, TrendUp as TrendingUp } from "@phosphor-icons/react";
+import {
+  UserList,
+  ChartLineUp,
+  Timer,
+  Wrench,
+} from "@phosphor-icons/react";
 
 const columns = [
   {
+    icon: UserList,
+    title: "Every customer, one record",
+    body: "Search a name and see everything: every vehicle, every visit, every job. No digging through folders or trying to remember.",
+  },
+  {
+    icon: ChartLineUp,
+    title: "Know your numbers today",
+    body: "See what you've earned and spent as jobs happen. No more adding up a shoebox of receipts at the end of the month to figure out where you stand.",
+  },
+  {
+    icon: Timer,
+    title: "See who's actually performing",
+    body: "Hours billed against hours estimated, job by job and tech by tech. Know where the time is going before it becomes a habit.",
+  },
+  {
     icon: Wrench,
-    title: "Run the shop",
-    body: "Digital job board, invoicing and estimates tied directly to the work, technician performance tracking against time and task estimates, inventory and parts tracking, and clear income-vs-expense reporting. Included from your very first plan — not gated behind an upgrade.",
-  },
-  {
-    icon: PhoneCall,
-    title: "Never lose a customer to silence",
-    body: "Automated time- and mileage-based service reminders, SMS and email delivery, and post-service review requests — so customers come back before they drift away.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Grow without the busywork",
-    body: "Reactivation campaigns for lapsed customers, a booking form for your website, and outreach that runs itself once it's set up.",
+    title: "Less paperwork, more wrench time",
+    body: "Every hour spent chasing an invoice or retyping a job is an hour off the shop floor. GaragePro exists to give that hour back.",
   },
 ];
 
@@ -27,7 +37,7 @@ const SolutionSection = () => {
             Everything you need. Nothing you have to unlock later.
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {columns.map(({ icon: Icon, title, body }) => (
             <div
               key={title}
