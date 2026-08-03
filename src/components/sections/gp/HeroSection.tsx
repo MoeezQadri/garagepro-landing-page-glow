@@ -26,8 +26,8 @@ const HeroSection = () => {
               Built for independent shops
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] text-foreground">
-              Run your whole shop from one place —{" "}
-              <span style={{ color: "hsl(var(--brand-accent))" }}>job board, invoicing, inventory, your team.</span>
+              Everything your shop needs to run.{" "}
+              <span style={{ color: "hsl(var(--brand-accent))" }}>Nothing locked behind an upgrade.</span>
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 max-w-xl">
               Invoicing, job tracking, inventory, and technician performance — all included from day one. No upgrade required to see your own job board.
