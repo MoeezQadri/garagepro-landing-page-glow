@@ -30,6 +30,7 @@ const plans: Plan[] = [
     blurb: "14-day full access, every feature unlocked",
     includes: ["Every feature", "14 days full access", "No credit card required"],
     cta: "Start Free Trial",
+    planKey: "free",
   },
   {
     name: "Basic",
@@ -47,6 +48,7 @@ const plans: Plan[] = [
     ],
     excludes: ["Automated reminders", "SMS/email delivery", "Review requests"],
     cta: "Get Started",
+    planKey: "basic",
   },
   {
     name: "Professional",
@@ -62,6 +64,7 @@ const plans: Plan[] = [
     ],
     cta: "Get Started",
     highlight: true,
+    planKey: "professional",
   },
   {
     name: "Enterprise",
@@ -78,6 +81,7 @@ const plans: Plan[] = [
     ],
     cta: "Get Started",
     note: "Priced for the full growth toolkit — a small team wanting complete automation belongs here too, not just large operations.",
+    planKey: "enterprise",
   },
 ];
 
