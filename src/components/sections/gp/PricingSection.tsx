@@ -126,6 +126,10 @@ const PricingSection = () => {
           {plans.map((plan) => {
             const price = billing === "annual" ? plan.annual : plan.monthly;
             const showPerMonth = plan.monthly !== "$0";
+            const subscribeUrl =
+              plan.name === "Free"
+                ? APP_SUBSCRIBE_URL
+                : getPlanSubscribeUrl(plan.planKey);
             return (
               <div
                 key={plan.name}
