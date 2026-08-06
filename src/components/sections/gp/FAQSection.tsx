@@ -7,7 +7,7 @@ import {
 
 const faqs = [
   {
-    q: "I only have 2\u20133 people on my team \u2014 why would I need a 50-seat plan?",
+    q: "I only have 2\u20133 people on my team, would would I need a 50-seat plan?",
     a: "Our seat limits are ceilings, not requirements. Enterprise is priced for the automation and outreach tools inside it, not for how many people you employ \u2014 a small team that wants the full toolkit is welcome there.",
   },
   {
