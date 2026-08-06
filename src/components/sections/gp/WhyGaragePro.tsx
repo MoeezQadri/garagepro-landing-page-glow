@@ -11,14 +11,14 @@ const WhyGaragePro = () => {
     <section className="py-20 bg-white">
       <div className="container px-4 md:px-6">
         <div className="max-w-4xl mx-auto space-y-8">
-          <div className="rounded-2xl border border-[hsl(var(--brand-accent))]/20 bg-[hsl(var(--brand-accent-light))] p-8 md:p-10 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[hsl(var(--brand-accent-text))] mb-4">
+          <div className="rounded-2xl border border-border bg-muted p-8 md:p-10 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Built by a garage, not a boardroom.
             </h2>
-            <p className="text-lg text-[hsl(var(--brand-accent-text))]/80 leading-relaxed">
+            <p className="text-lg text-foreground/80 leading-relaxed">
               GaragePro started inside GearHead Garages, a working automotive shop handling everyday repair and servicing alongside full restoration and restomod builds. Every feature exists because a real shop needed it first: a job board that actually reflects where a car is, invoicing that doesn't mean retyping the same job twice, and a way to know a customer is drifting off before they're already gone.
             </p>
-            <p className="text-lg text-[hsl(var(--brand-accent-text))]/80 leading-relaxed mt-4">
+            <p className="text-lg text-foreground/80 leading-relaxed mt-4">
               This isn't enterprise software with an auto shop skin bolted on. It came out of a shop, for shops.
             </p>
           </div>
