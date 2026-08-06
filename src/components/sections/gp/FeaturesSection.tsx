@@ -16,7 +16,7 @@ const features = [
   {
     icon: FileText,
     title: "Estimate-to-Invoice Workflow",
-    body: "Build an estimate, get it approved, and turn it into an invoice with one click. The job, the estimate, and the bill are the same record — nothing gets re-typed or lost in translation.",
+    body: "Build an estimate, get it approved, and turn it into an invoice with one click. The job, the estimate, and the bill are the same record, so nothing gets retyped or lost along the way.\n",
   },
   {
     icon: Timer,
@@ -26,7 +26,7 @@ const features = [
   {
     icon: Boxes,
     title: "Inventory & Parts Tracking",
-    body: "Log parts as they're used and watch stock counts update in real time — not reconciled once a month when it's too late to reorder.",
+    body: "Log parts as they're used and watch stock counts update in real time, instead of reconciling once a month when it's too late to reorder.\n",
   },
   {
     icon: BellRing,
@@ -37,7 +37,7 @@ const features = [
   {
     icon: BarChart3,
     title: "Reporting You Can Actually Use",
-    body: "Income vs. expense, at a glance — not buried in a spreadsheet you have to build yourself every month.",
+    body: "See income against expenses at a glance, instead of a spreadsheet you have to build yourself every month.\n",
   },
 ];
 
