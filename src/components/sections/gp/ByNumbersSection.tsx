@@ -1,22 +1,22 @@
 const stats = [
   {
     value: "10–20%",
-    body: "of appointments at small service businesses become no-shows — each one an empty bay and a technician with nothing to bill.",
+    body: "of appointments at small service businesses become no-shows. Each one an empty bay and a technician with nothing to bill.",
     note: "Industry estimate",
   },
   {
     value: "~1 in 5",
-    body: "service calls at a repair shop goes unanswered during business hours — and most callers don't call back, they just call the next shop.",
+    body: "service calls at a repair shop goes unanswered during business hours and most callers don't call back. They just call the next shop.",
     note: "Industry estimate",
   },
   {
     value: "60%",
-    body: "of a typical repair shop's revenue comes from repeat customers — exactly what's at risk when there's no system prompting a return visit.",
+    body: "of a typical repair shop's revenue comes from repeat customers which is exactly what's at risk when there's no system prompting a return visit.",
     note: "Industry estimate",
   },
   {
     value: "$0",
-    body: "visibility into which technician, which job type, or which week is actually making you money — when it's tracked in someone's head instead of a system.",
+    body: "zero visibility into which technician, which job type, or which week is actually making you money, when it's tracked in someone's head instead of a system.",
     note: null,
   },
 ];
