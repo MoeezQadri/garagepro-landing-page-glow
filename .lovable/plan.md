@@ -1,27 +1,44 @@
-## Goal
-Shift GaragePro from the industrial "Hard Bento" navy/orange look to a minimalist **black & white** theme with **curvy, modern** components, while keeping a photographic hero background under a translucent overlay.
+# Add Google Analytics / Google Tag Manager to GaragePro
 
-## Design direction
-- **Palette:** pure white background (`#ffffff`), near-black foreground (`#0a0a0a`), soft grey borders/muted text (`#f4f4f5`, `#a1a1aa`). Primary = black, primary-foreground = white. No orange, no navy.
-- **Typography:** keep Hind for body, but drop the uppercase Archivo Black display in favor of a cleaner heading treatment (still Archivo Black, mixed-case, tighter tracking) for a modern minimal feel.
-- **Shape language:** curvy & modern — bump `--radius` from `0.25rem` to `1rem`; buttons become fully rounded (`rounded-full`). Remove hard offset "signage" shadows; replace with soft subtle shadows (`shadow-sm`, `hover:shadow-md`) and thin 1px borders.
-- **Hero:** restore a real photo background (reuse `src/assets/hero-shop.jpg`) with a white/black translucent overlay (`bg-white/70` or `bg-black/50` depending on text color) so the image is visible but text stays readable. Dark text on a lightened photo overlay by default.
+Goal: Track page views and key conversion events on the GaragePro landing page without adding a backend.
 
-## Changes
-1. **`src/index.css`** — rewrite tokens: white background, black foreground/primary, grey muted/border, larger radius. Remove uppercase + heavy tracking on `h1–h4`. Replace `.feature-card`, `.pricing-card`, `.testimonial-card`, `.btn-signage` with minimal rounded variants (soft border, soft shadow, no hard offset). Simplify `.hero-gradient` (no longer needed) or repurpose.
-2. **`tailwind.config.ts`** — remap `mint` and `garage` scales to a neutral greyscale ramp so existing `bg-mint-950`, `text-mint-800`, `border-mint-100`, etc. resolve to black/white/grey without touching every component.
-3. **`src/components/sections/gp/HeroSection.tsx`** — set background to `hero-shop.jpg` via `bg-cover` with a translucent white overlay (`bg-white/75 backdrop-blur-sm`) so text stays dark and readable; remove the blueprint grid; make buttons `rounded-full`.
-4. **`src/components/layout/Navbar.tsx`** & **`src/components/sections/Footer.tsx`** — white nav with black text, black footer with white text; rounded-full CTA.
-5. **Buttons across sections** (`HeroSection`, `FinalCTASection`, `Navbar`, `PricingSection`, `DemoSection`, `Hero.tsx`) — add `rounded-full` and switch to black/white variants via existing primary tokens (no per-component color rewrites needed once tokens change).
-6. **Card sections** (`ProblemSection`, `SolutionSection`, `FeaturesSection`, `ByNumbersSection`, `WhyGaragePro`, `PricingSection`, `Testimonials`, `FAQSection`) — inherit new minimal card styling automatically via the updated `.feature-card` / `.pricing-card` / `.testimonial-card` classes plus the remapped `mint` scale. Spot-fix any hard-coded orange/navy accents to black.
-7. **Icons** — switch tile fills from navy+orange to black circle with white icon (or vice versa) inside `SolutionSection` and `FeaturesSection`.
+## Two approaches
 
-## Out of scope
-- No copy changes.
-- No layout/section reordering.
-- Admin panel visuals untouched (functional area).
+### Approach 1: Lovable Google Analytics connector (recommended for simple tracking)
 
-## Technical notes
-- Remapping the `mint`/`garage` Tailwind scales is the cheapest path: every existing `mint-950 → #0a0a0a`, `mint-100 → #f4f4f5`, etc. keeps components working without a sweep.
-- Keep hero photo but overlay `bg-white/75` so the picture reads as a soft textured backdrop, not a full image — matches minimalist intent while satisfying "image with transparency over it."
-- Verify with a Playwright screenshot at `/` after changes.
+Best if you just want page-view analytics and simple event tracking. Lovable provides a managed GA4 connector; no manual script injection needed.
+
+What we would do:
+1. Connect the Google Analytics connector via Lovable's connector UI.
+2. Lovable injects `VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY` as a project env var.
+3. Initialize `gtag.js` once at app startup in `src/main.tsx` (or a new `src/lib/analytics.ts`) using the injected Measurement ID.
+4. Track the initial page load automatically and send `page_view` events on route changes (if routes are added later).
+5. Track conversion events on key CTAs:
+   - "Book a live walkthrough" click → `gtag('event', 'book_demo_click')`
+   - "Start free trial" click → `gtag('event', 'start_trial_click', { plan })`
+   - "Subscribe" plan clicks → `gtag('event', 'select_plan_click', { plan })`
+
+Pros: No manual Measurement ID to store in code; managed by Lovable. Cons: Does not include Google Tag Manager itself.
+
+### Approach 2: Manual Google Tag Manager + GA4 (recommended if you already have a GTM container)
+
+Best if you want GTM's tag/pixel management, custom triggers, or multiple marketing pixels.
+
+What we would do:
+1. Add the GTM container snippet to `index.html` right after `<head>` opens, plus the `<noscript>` fallback after `<body>` opens.
+2. Create a small `src/lib/analytics.ts` helper that wraps `window.dataLayer.push`.
+3. Fire a `page_view` event on app startup.
+4. Fire custom events from the same CTAs as above using `dataLayer` pushes so GTM can route them to GA4, Meta Pixel, etc.
+
+Pros: Full GTM flexibility. Cons: You need your own GTM container ID and must keep it in the build (public string, so it's safe to store in `index.html` or an env var).
+
+## What I need from you
+
+- Which approach do you prefer?
+- If Approach 1: do you have a Google Analytics 4 property already, or do you need help creating one?
+- If Approach 2: what is your GTM container ID (format `GTM-XXXXXXX`)?
+- Any extra events beyond the CTA clicks listed above that you want to track?
+
+## Estimated scope
+
+One file addition (`src/lib/analytics.ts`) and minor edits to `index.html` or `src/main.tsx`, plus CTA event handlers. No backend changes.
