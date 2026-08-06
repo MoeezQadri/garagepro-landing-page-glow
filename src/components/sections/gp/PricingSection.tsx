@@ -197,8 +197,9 @@ const PricingSection = () => {
           })}
         </div>
 
-        <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
-          No contracts. Cancel anytime. Automation setup on Professional and Enterprise is configured by our team after signup — reach out and we'll have it running quickly.
+        <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto whitespace-pre-line">
+          No contracts. Cancel anytime.{"\u00a0"}{"\n"}
+          Automation setup on Professional and Enterprise is configured by our team after signup, just reach out and we'll have it running quickly.
         </p>
       </div>
     </section>
