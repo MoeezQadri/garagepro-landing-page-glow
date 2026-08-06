@@ -11,7 +11,7 @@ const features = [
   {
     icon: ClipboardList,
     title: "Digital Job Board",
-    body: "See every vehicle's status — waiting, in progress, ready for pickup — at a glance. No more walking the bay to find out where a job stands.",
+    body: "See every vehicle's status, whether it's waiting, in progress, or ready for pickup, at a glance. No more walking the bay to find out where a job stands.\n",
   },
   {
     icon: FileText,
