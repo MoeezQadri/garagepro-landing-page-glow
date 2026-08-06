@@ -40,10 +40,10 @@ const WhyGaragePro = () => {
             ))}
           </div>
 
-          <div className="rounded-2xl border border-[hsl(var(--brand-accent))]/20 bg-[hsl(var(--brand-accent-light))] p-8 md:p-10 shadow-sm">
-            <p className="text-lg md:text-xl font-medium text-[hsl(var(--brand-accent-text))] leading-snug">
+          <div className="rounded-2xl border-2 border-foreground bg-white p-8 md:p-10 shadow-lg">
+            <p className="text-lg md:text-xl font-medium text-muted-foreground leading-snug">
               Most shop software makes you pay for their higher tier just to see your own job board or track technician performance.{" "}
-              <span className="text-[hsl(var(--brand-accent-text))]/70">GaragePro includes both from your first paid plan.</span>
+              <span className="text-foreground font-semibold">GaragePro includes both from your first paid plan.</span>
             </p>
           </div>
         </div>
