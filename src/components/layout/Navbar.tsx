@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { List as Menu, X } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
 import { APP_SUBSCRIBE_URL, BLOG_URL } from "@/lib/links";
+import { trackCta } from "@/lib/analytics";
 
 const navLinks = [
   { href: "#features", label: "Features" },
@@ -37,11 +38,19 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+            onClick={() =>
+              trackCta("Blog", { location: "navbar", destination: "blog" }, "outbound_click")
+            }
           >
             Blog
           </a>
           <Button asChild className="btn-signage bg-foreground hover:bg-foreground/90 text-background">
-            <a href={APP_SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={APP_SUBSCRIBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCta("Start Free", { location: "navbar", destination: "subscribe" })}
+            >
               Start Free
             </a>
           </Button>
@@ -76,12 +85,22 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 text-foreground/80 hover:bg-muted rounded-md"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                trackCta("Blog", { location: "navbar_mobile", destination: "blog" }, "outbound_click");
+                setIsMobileMenuOpen(false);
+              }}
             >
               Blog
             </a>
             <Button asChild className="w-full rounded-full bg-foreground hover:bg-foreground/90 text-background">
-              <a href={APP_SUBSCRIBE_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={APP_SUBSCRIBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  trackCta("Start Free", { location: "navbar_mobile", destination: "subscribe" })
+                }
+              >
                 Start Free
               </a>
             </Button>
