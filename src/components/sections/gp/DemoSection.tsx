@@ -9,7 +9,7 @@ const DemoSection = () => {
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-mint-950 mb-4">
-            See it running in a real shop, in under 2 minutes.
+            See it running in a real shop, in under 5 minutes.
           </h2>
           <p className="text-lg text-muted-foreground whitespace-pre-line">
             No sales pitch, just the job board, an invoice being built from an actual job, and the reminder system in action. See exactly what you'd be using before you sign up for anything.
