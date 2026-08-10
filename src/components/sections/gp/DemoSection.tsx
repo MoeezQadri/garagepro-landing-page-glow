@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Play, Calendar, ArrowRight } from "@phosphor-icons/react";
+import { Calendar, ArrowRight } from "@phosphor-icons/react";
 import { CALENDLY_URL, APP_SUBSCRIBE_URL } from "@/lib/links";
+import demoVideo from "@/assets/garagepro-demo.mp4.asset.json";
 
 const DemoSection = () => {
   return (
@@ -16,29 +17,18 @@ const DemoSection = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {/* Video placeholder */}
-          <div className="relative rounded-2xl overflow-hidden border border-mint-200 shadow-xl aspect-video bg-mint-950">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <button
-                  className="w-20 h-20 rounded-full bg-white/95 hover:bg-white text-mint-800 flex items-center justify-center shadow-lg transition-transform hover:scale-105"
-                  aria-label="Play demo video"
-                >
-                  <Play size={32} className="ml-1" fill="currentColor" />
-                </button>
-                <p className="text-mint-100 mt-4 text-sm">2-minute product walkthrough</p>
-              </div>
-            </div>
+          <div className="relative rounded-2xl overflow-hidden border border-border shadow-xl bg-foreground">
+            <video
+              src={demoVideo.url}
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-auto block"
+              aria-label="GaragePro product walkthrough"
+            />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Button
-              size="lg"
-              className="btn-signage bg-foreground hover:bg-foreground/90 text-background"
-            >
-              <Play size={16} className="mr-2" />
-              Watch the 2-Minute Demo
-            </Button>
+          <div className="flex justify-center mt-8">
             <Button
               asChild
               size="lg"
