@@ -31,3 +31,11 @@ export function trackEvent(name: string, params?: Record<string, unknown>) {
   if (!MEASUREMENT_ID) return;
   gtag("event", name, params ?? {});
 }
+
+export function trackCta(
+  label: string,
+  params?: Record<string, unknown>,
+  eventName = "cta_click"
+) {
+  trackEvent(eventName, { label, ...(params ?? {}) });
+}
