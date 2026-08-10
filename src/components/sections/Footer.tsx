@@ -2,6 +2,7 @@
 import { EnvelopeSimple as Mail } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
 import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL } from "@/lib/links";
+import { trackCta } from "@/lib/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,6 +49,13 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-mint-300 hover:text-white transition-colors"
+                  onClick={() =>
+                    trackCta(
+                      "Book a Walkthrough",
+                      { location: "footer", destination: "calendly" },
+                      "book_demo_click"
+                    )
+                  }
                 >
                   Book a Walkthrough
                 </a>
@@ -66,6 +74,9 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-mint-300 hover:text-white transition-colors"
+                  onClick={() =>
+                    trackCta("Blog", { location: "footer", destination: "blog" }, "outbound_click")
+                  }
                 >
                   Blog
                 </a>
@@ -74,6 +85,9 @@ const Footer = () => {
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="inline-flex items-center gap-2 text-mint-300 hover:text-white transition-colors"
+                  onClick={() =>
+                    trackCta("Email Support", { location: "footer", destination: "email" })
+                  }
                 >
                   <Mail size={14} />
                   {CONTACT_EMAIL}
