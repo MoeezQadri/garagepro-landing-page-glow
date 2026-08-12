@@ -6,17 +6,23 @@ const MEASUREMENT_ID = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_A
 declare global {
   interface Window {
     dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
 
 export function gtag(...args: unknown[]) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
+  // gtag.js only executes commands pushed as an `arguments` object.
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
 }
 
 export function initAnalytics() {
   if (!MEASUREMENT_ID || typeof document === "undefined") return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = gtag;
 
   const script = document.createElement("script");
   script.async = true;
