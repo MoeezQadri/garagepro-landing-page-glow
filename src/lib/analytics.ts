@@ -6,17 +6,31 @@ const MEASUREMENT_ID = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_A
 declare global {
   interface Window {
     dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
+}
+
+// gtag.js only executes dataLayer entries that are real `arguments` objects.
+const makeArguments = function () {
+  // eslint-disable-next-line prefer-rest-params
+  return arguments;
+} as unknown as (...rest: unknown[]) => IArguments;
+
+function toArguments(args: unknown[]): IArguments {
+  return makeArguments(...args);
 }
 
 export function gtag(...args: unknown[]) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
+  window.dataLayer.push(toArguments(args));
 }
 
 export function initAnalytics() {
   if (!MEASUREMENT_ID || typeof document === "undefined") return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = gtag;
 
   const script = document.createElement("script");
   script.async = true;
