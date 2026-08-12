@@ -10,12 +10,18 @@ declare global {
   }
 }
 
+// gtag.js only executes dataLayer entries that are real `arguments` objects.
+function toArguments(args: unknown[]): IArguments {
+  // eslint-disable-next-line prefer-rest-params
+  return (function () {
+    return arguments;
+  })(...(args as never[]));
+}
+
 export function gtag(...args: unknown[]) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];
-  // gtag.js only executes commands pushed as an `arguments` object.
-  // eslint-disable-next-line prefer-rest-params
-  window.dataLayer.push(arguments);
+  window.dataLayer.push(toArguments(args));
 }
 
 export function initAnalytics() {
