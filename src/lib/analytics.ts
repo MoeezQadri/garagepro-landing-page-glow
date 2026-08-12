@@ -12,10 +12,11 @@ declare global {
 
 // gtag.js only executes dataLayer entries that are real `arguments` objects.
 function toArguments(args: unknown[]): IArguments {
-  // eslint-disable-next-line prefer-rest-params
-  return (function () {
+  const make = function (...rest: unknown[]) {
+    // eslint-disable-next-line prefer-rest-params
     return arguments;
-  })(...(args as never[]));
+  } as (...rest: unknown[]) => IArguments;
+  return make(...args);
 }
 
 export function gtag(...args: unknown[]) {
