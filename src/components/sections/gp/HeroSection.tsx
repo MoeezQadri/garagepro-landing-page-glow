@@ -13,10 +13,11 @@ const HeroSection = () => {
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       {/* Photo background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroShop})` }}
-        aria-hidden="true"
+      <img
+        src={heroShop}
+        alt="Technicians working in an independent auto repair shop that tracks jobs on the GaragePro digital job board"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
       />
       {/* Translucent white overlay for readability */}
       <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" aria-hidden="true" />

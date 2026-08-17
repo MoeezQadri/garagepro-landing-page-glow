@@ -47,8 +47,12 @@ const FeaturesSection = () => {
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-mint-950">
-            Everything a shop actually uses, in one place.
+            Auto repair estimate and invoicing software, plus everything else a shop actually uses.
           </h2>
+          <p className="mt-4 text-lg text-foreground/70">
+            Estimates, invoicing, a live job board, parts inventory and technician
+            tracking, in one place instead of five tools.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map(({ icon: Icon, title, body, tag }) => (
