@@ -34,29 +34,15 @@ Terms to avoid for now: "shop management software" (KD 61), "mechanic shop softw
 - Add alt text mentioning the shop-floor job board on the hero image.
 - Keep the existing hero H1 as the single H1.
 
-### 3. Three new routes for the easy-win keywords
-
-Each is a real page with its own `<Helmet>` title/description/canonical, not a doorway page — reusing existing components plus specific copy, and linked from the footer:
-
-| Route | Target keyword | Title (draft) |
-|---|---|---|
-| `/auto-repair-estimate-software` | auto repair estimate software | Auto Repair Estimate Software — Quote Jobs Fast \| GaragePro |
-| `/auto-repair-invoicing-software` | auto repair invoicing software | Auto Repair Invoicing Software for Small Shops \| GaragePro |
-| `/free-auto-repair-shop-software` | free auto repair shop software | Free Auto Repair Shop Software Trial — Full Access \| GaragePro |
-
-Each page: short intro answering the search, a feature block grounded in what GaragePro actually does, a pricing pointer, and the same subscribe CTA with GA tracking.
-
-### 4. Sitemap and crawl
-
-Extend `scripts/generate-sitemap.ts` so the new routes land in `public/sitemap.xml` (currently homepage only). `robots.txt` already advertises the sitemap.
-
 ## Technical notes
 
-- Routes go in `src/App.tsx` above the catch-all; `HelmetProvider` is already wired in `src/main.tsx`, and `NotFound.tsx` already shows the Helmet pattern to follow.
+- Scope is `index.html` head tags plus copy in the existing homepage sections — no new routes, no sitemap changes.
+- One cleanup needed to keep the build green: `src/integrations/supabase/client.ts` is a leftover file importing a package that is no longer installed. It will be deleted.
 - Static Vite SPA: Helmet tags are read by Google, but social-preview crawlers only see `index.html`'s head — per-route social previews would need SSR.
 - No backend work; no `og:image` added (hosting injects one).
 
 ## Not included
 
+- New keyword landing pages for estimate/invoicing/free-trial terms, and the sitemap update they would need — deferred at your request.
 - Competitor-brand comparison page ("tekmetric alternative") — 30/mo and it invites brand-comparison arguments. Say the word and I'll add it.
 - A blog for the question keywords; the blog lives on WordPress at blog.mygaragepro.co.
