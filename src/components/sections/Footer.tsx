@@ -78,7 +78,7 @@ const Footer = () => {
                   href="/about/auto-repair-estimate-software"
                   className="text-mint-300 hover:text-white transition-colors"
                 >
-                  Estimate software
+                  Create Estimates
                 </a>
               </li>
               <li>
@@ -86,7 +86,7 @@ const Footer = () => {
                   href="/about/auto-repair-invoicing-software"
                   className="text-mint-300 hover:text-white transition-colors"
                 >
-                  Invoicing software
+                  Create Invoices
                 </a>
               </li>
               <li>
@@ -94,7 +94,7 @@ const Footer = () => {
                   href="/about/free-auto-repair-shop-software"
                   className="text-mint-300 hover:text-white transition-colors"
                 >
-                  Free software
+                  Free Invoicing software
                 </a>
               </li>
             </ul>

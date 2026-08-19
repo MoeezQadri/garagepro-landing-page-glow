@@ -14,9 +14,9 @@ const navLinks = [
 
 const aboutLinks = [
   { href: "/about", label: "About GaragePro" },
-  { href: "/about/auto-repair-estimate-software", label: "Estimate software" },
-  { href: "/about/auto-repair-invoicing-software", label: "Invoicing software" },
-  { href: "/about/free-auto-repair-shop-software", label: "Free software" },
+  { href: "/about/auto-repair-estimate-software", label: "Create Estimates" },
+  { href: "/about/auto-repair-invoicing-software", label: "Create Invoices" },
+  { href: "/about/free-auto-repair-shop-software", label: "Free Invoicing software" },
 ];
 
 const Navbar = () => {
