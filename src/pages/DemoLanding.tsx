@@ -50,7 +50,7 @@ const DemoLanding = () => {
                 Interactive sandbox — no signup
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-mint-950 mb-6">
-                See what it feels like when the history is already there.
+                Test out the invoicing without any sign up
               </h1>
               <p className="text-lg text-muted-foreground">
                 This is a real, working copy of GaragePro, loaded with a sample vehicle and its
