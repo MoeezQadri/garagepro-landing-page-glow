@@ -17,11 +17,12 @@ Because the landing page's own theme (forest green, Archivo Black, rounded-full 
 ## What the visitor experiences
 
 1. Lands on `/demo` — short marketing intro and a "Launch the demo shop" button, then the full-width sandbox.
-2. A persistent banner: "Demo shop with sample data — nothing here is real. Reset data / Start free trial".
+2. A persistent banner: "Demo shop with sample data — invoicing is fully playable, everything else is a preview. Reset invoices / Start free trial".
 3. Seeded data: ~8 customers, 10 vehicles, 12 invoices across statuses, 10 tasks, 4 mechanics, ~25 parts, and enough history for the dashboard metrics and revenue chart to look real.
-4. Fully interactive: create/edit invoices (line items, parts, labour hours, tax, discount, payments, live totals), add customers and vehicles, move tasks through statuses, filter and sort lists.
-5. All changes persist in `localStorage` for that browser; "Reset demo data" restores the seed.
-6. On **Download PDF** or **Send to customer**, the gate dialog asks for name, email, shop name, optional phone. After submitting, the print-styled invoice opens for save/print, and the gate is remembered so it doesn't reappear.
+4. **Invoicing is the only editable area.** Visitors can create an invoice, pick a customer and vehicle, add and remove parts and labour rows, change quantities, rates, hours, tax and discount, record a payment, and watch totals recalculate — same form and math as the real app.
+5. **Everything else is a locked read-only preview.** Dashboard, Customers, Vehicles, Tasks, Mechanics and Parts render with the sample data, but every input and action button (Add, Edit, Delete, status change) is disabled. Clicking or hovering a locked control shows "Available in the full version — start your free trial", and locked pages carry a subtle "Preview only" badge in the page header. Read-only search and sorting stay enabled so the previews still feel alive.
+6. Invoice edits persist in `localStorage` for that browser; "Reset invoices" restores the seed. Nothing else is mutable, so nothing else needs resetting.
+7. On **Download PDF** or **Send to customer**, the gate dialog asks for name, email, shop name, optional phone. After submitting, the print-styled invoice opens for save/print, and the gate is remembered so it doesn't reappear.
 
 ## Lead capture
 
@@ -38,8 +39,8 @@ GA events: `demo_start`, `demo_invoice_created`, `demo_lead_submit` (plus existi
 ## Technical notes
 
 - Route `/demo` in `src/App.tsx`; page `src/pages/Demo.tsx`.
-- `src/features/demo/`: `seed.ts`, `types.ts`, `useSandbox.tsx` (reducer + localStorage + reset), `invoiceCalc.ts` (ported from the app's `calculateInvoiceBreakdown` so totals match production).
-- `src/features/demo/components/`: `SandboxShell`, `SandboxSidebar`, `DashboardView`, `InvoicesView`, `InvoiceEditor`, `InvoicePreview`, `CustomersView`, `VehiclesView`, `TasksView`, `MechanicsView`, `PartsView`, `LeadGateDialog`.
+- `src/features/demo/`: `seed.ts`, `types.ts`, `useSandbox.tsx` (invoice-only reducer + localStorage + reset; all other collections exposed read-only), `invoiceCalc.ts` (ported from the app's `calculateInvoiceBreakdown` so totals match production).
+- `src/features/demo/components/`: `SandboxShell`, `SandboxSidebar`, `DashboardView`, `InvoicesView`, `InvoiceEditor`, `InvoicePreview`, `CustomersView`, `VehiclesView`, `TasksView`, `MechanicsView`, `PartsView`, `LeadGateDialog`, plus a `LockedControl` wrapper that disables its child and shows the upgrade message.
 - Reuses existing shadcn primitives already in this project (sidebar, table, tabs, dialog, select, chart) — copying only the app's token values and layout structure, not its data layer.
 - Sandbox tokens defined as a scoped `.gp-app` block in `src/index.css`; no hardcoded color utilities.
 - PDF via browser print against a print-styled invoice preview.
@@ -49,4 +50,9 @@ GA events: `demo_start`, `demo_invoice_created`, `demo_lead_submit` (plus existi
 
 - Connecting to the real app's database or API — this is a faithful mock with local sample data.
 - Auth, subscriptions, superadmin, reports and settings screens from the real app.
+- Editing anything outside invoicing — by design those screens are read-only previews.
+
+## Also needs fixing
+
+A stale `src/integrations/supabase/client.ts` left over from the earlier backend removal currently breaks the build (`@supabase/supabase-js` isn't installed). Since the lead gate needs the Supabase client anyway, the build step reinstates the dependency and regenerates that client properly.
 - Actually emailing the invoice (the button explains it's simulated in the demo).
