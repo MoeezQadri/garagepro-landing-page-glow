@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight } from "@phosphor-icons/react";
+import { Calendar, ArrowRight, CursorClick } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 import { CALENDLY_URL, APP_SUBSCRIBE_URL } from "@/lib/links";
 import { trackCta, trackEvent } from "@/lib/analytics";
 import demoVideo from "@/assets/garagepro-demo.mp4.asset.json";
@@ -38,7 +39,18 @@ const DemoSection = () => {
             />
           </div>
 
-          <div className="flex justify-center mt-8">
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <Button asChild size="lg" className="rounded-full">
+              <Link
+                to="/demo"
+                onClick={() =>
+                  trackCta("Try the Interactive Demo", { location: "demo", destination: "sandbox" })
+                }
+              >
+                <CursorClick size={16} className="mr-2" />
+                Try the Interactive Demo
+              </Link>
+            </Button>
             <Button
               asChild
               size="lg"
@@ -62,6 +74,10 @@ const DemoSection = () => {
               </a>
             </Button>
           </div>
+
+          <p className="mt-4 text-center text-sm text-muted-foreground">
+            Build a real invoice in a sample shop — no login, no setup.
+          </p>
 
           <div className="mt-8 text-center">
             <a
