@@ -7,7 +7,7 @@ import { trackCta } from "@/lib/analytics";
 
 const navLinks = [
   { href: "#features", label: "Features" },
-  { href: "#demo", label: "Demo" },
+  { href: "/demo", label: "Demo" },
   { href: "#pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
 ];
