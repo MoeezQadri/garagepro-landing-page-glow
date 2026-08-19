@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-mint-950 text-mint-100">
       <div className="container px-4 md:px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start">
           <div className="text-mint-100">
             <Logo invert />
             <p className="text-mint-300 mt-4 max-w-sm text-sm leading-relaxed">
@@ -58,6 +58,43 @@ const Footer = () => {
                   }
                 >
                   Book a Walkthrough
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-white mb-4">
+              About
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="/about" className="text-mint-300 hover:text-white transition-colors">
+                  About GaragePro
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/about/auto-repair-estimate-software"
+                  className="text-mint-300 hover:text-white transition-colors"
+                >
+                  Estimate software
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/about/auto-repair-invoicing-software"
+                  className="text-mint-300 hover:text-white transition-colors"
+                >
+                  Invoicing software
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/about/free-auto-repair-shop-software"
+                  className="text-mint-300 hover:text-white transition-colors"
+                >
+                  Free software
                 </a>
               </li>
             </ul>
