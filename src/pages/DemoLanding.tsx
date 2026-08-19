@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, CursorClick } from "@phosphor-icons/react";
+import { ArrowRight, Calendar } from "@phosphor-icons/react";
 import { APP_SUBSCRIBE_URL, CALENDLY_URL } from "@/lib/links";
 import { trackCta } from "@/lib/analytics";
+import demoScreenshot from "@/assets/garagepro-demo-screenshot.jpg";
 
 const TITLE = "GaragePro Sandbox: Try Real Auto Shop Invoicing Free";
 const DESCRIPTION =
