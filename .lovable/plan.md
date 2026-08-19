@@ -39,8 +39,8 @@ GA events: `demo_start`, `demo_invoice_created`, `demo_lead_submit` (plus existi
 ## Technical notes
 
 - Route `/demo` in `src/App.tsx`; page `src/pages/Demo.tsx`.
-- `src/features/demo/`: `seed.ts`, `types.ts`, `useSandbox.tsx` (reducer + localStorage + reset), `invoiceCalc.ts` (ported from the app's `calculateInvoiceBreakdown` so totals match production).
-- `src/features/demo/components/`: `SandboxShell`, `SandboxSidebar`, `DashboardView`, `InvoicesView`, `InvoiceEditor`, `InvoicePreview`, `CustomersView`, `VehiclesView`, `TasksView`, `MechanicsView`, `PartsView`, `LeadGateDialog`.
+- `src/features/demo/`: `seed.ts`, `types.ts`, `useSandbox.tsx` (invoice-only reducer + localStorage + reset; all other collections exposed read-only), `invoiceCalc.ts` (ported from the app's `calculateInvoiceBreakdown` so totals match production).
+- `src/features/demo/components/`: `SandboxShell`, `SandboxSidebar`, `DashboardView`, `InvoicesView`, `InvoiceEditor`, `InvoicePreview`, `CustomersView`, `VehiclesView`, `TasksView`, `MechanicsView`, `PartsView`, `LeadGateDialog`, plus a `LockedControl` wrapper that disables its child and shows the upgrade message.
 - Reuses existing shadcn primitives already in this project (sidebar, table, tabs, dialog, select, chart) — copying only the app's token values and layout structure, not its data layer.
 - Sandbox tokens defined as a scoped `.gp-app` block in `src/index.css`; no hardcoded color utilities.
 - PDF via browser print against a print-styled invoice preview.
@@ -50,4 +50,9 @@ GA events: `demo_start`, `demo_invoice_created`, `demo_lead_submit` (plus existi
 
 - Connecting to the real app's database or API — this is a faithful mock with local sample data.
 - Auth, subscriptions, superadmin, reports and settings screens from the real app.
+- Editing anything outside invoicing — by design those screens are read-only previews.
+
+## Also needs fixing
+
+A stale `src/integrations/supabase/client.ts` left over from the earlier backend removal currently breaks the build (`@supabase/supabase-js` isn't installed). Since the lead gate needs the Supabase client anyway, the build step reinstates the dependency and regenerates that client properly.
 - Actually emailing the invoice (the button explains it's simulated in the demo).
