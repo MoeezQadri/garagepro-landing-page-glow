@@ -113,7 +113,7 @@ const groups: FaqGroup[] = [
       },
       {
         q: "Does GaragePro integrate with QuickBooks or other accounting software?",
-        a: "Not yet. QuickBooks integration is something we're evaluating as a future automation on our higher plans, the same way reminders and review requests work today.",
+        a: "QuickBooks integration is something you can ask for as part of the automation options available on our higher plans, the same way reminders and review requests work today.",
       },
       {
         q: "Can I use GaragePro on my phone?",
