@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, CursorClick } from "@phosphor-icons/react";
+import { ArrowRight, Calendar } from "@phosphor-icons/react";
 import { APP_SUBSCRIBE_URL, CALENDLY_URL } from "@/lib/links";
 import { trackCta } from "@/lib/analytics";
+import demoScreenshot from "@/assets/garagepro-demo-screenshot.jpg";
 
 const TITLE = "GaragePro Sandbox: Try Real Auto Shop Invoicing Free";
 const DESCRIPTION =
@@ -13,9 +14,6 @@ const DESCRIPTION =
 const URL = "https://mygaragepro.co/demo";
 
 const DemoLanding = () => {
-  const openSandbox = () =>
-    trackCta("Open the Sandbox", { location: "demo_landing_hero", destination: "sandbox" });
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
@@ -45,30 +43,34 @@ const DemoLanding = () => {
 
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-16 md:pt-40 md:pb-20">
+        <section className="pt-32 pb-12 md:pt-40 md:pb-16">
           <div className="container px-4 md:px-6">
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="max-w-3xl mx-auto text-center mb-10">
               <p className="inline-flex items-center rounded-full bg-mint-50 px-4 py-1 text-sm font-medium text-mint-800 border border-mint-100 mb-6">
                 Interactive sandbox — no signup
               </p>
               <h1 className="text-4xl md:text-5xl font-bold text-mint-950 mb-6">
                 See what it feels like when the history is already there.
               </h1>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground">
                 This is a real, working copy of GaragePro, loaded with a sample vehicle and its
                 service history. No signup. No setup. Just open it and build an invoice the way you
                 would for a real job.
               </p>
-              <Button asChild size="lg" className="rounded-full">
-                <Link to="/demo/sandbox" onClick={openSandbox}>
-                  <CursorClick size={18} className="mr-2" />
-                  Open the Sandbox
-                </Link>
-              </Button>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Takes about a minute. Nothing you do here is saved or shared.
-              </p>
             </div>
+            <div className="max-w-4xl mx-auto rounded-2xl border border-mint-100 shadow-xl overflow-hidden bg-white">
+              <img
+                src={demoScreenshot}
+                alt="GaragePro interactive invoice demo showing a 2019 Toyota Camry invoice with oil change, brake pads and labor line items"
+                width={1280}
+                height={768}
+                loading="eager"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Takes about a minute. Nothing you do here is saved or shared.
+            </p>
           </div>
         </section>
 
