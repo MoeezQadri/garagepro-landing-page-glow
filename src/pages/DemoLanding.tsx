@@ -109,7 +109,7 @@ const DemoLanding = () => {
                 what parts you used last time or what you quoted a customer three months ago, this is
                 what fixes it.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex justify-center">
                 <Button asChild size="lg" className="rounded-full">
                   <Link
                     to="/demo/sandbox"
