@@ -12,6 +12,13 @@ const navLinks = [
   { href: "/faq", label: "FAQ" },
 ];
 
+const aboutLinks = [
+  { href: "/about", label: "About GaragePro" },
+  { href: "/about/auto-repair-estimate-software", label: "Estimate software" },
+  { href: "/about/auto-repair-invoicing-software", label: "Invoicing software" },
+  { href: "/about/free-auto-repair-shop-software", label: "Free software" },
+];
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -33,6 +40,28 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <div className="relative group">
+            <a
+              href="/about"
+              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+            >
+              About
+            </a>
+            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 hidden group-hover:block group-focus-within:block">
+              <ul className="min-w-56 rounded-xl border border-mint-200 bg-white p-2 shadow-lg">
+                {aboutLinks.map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="block rounded-lg px-3 py-2 text-sm text-foreground/80 hover:bg-muted hover:text-primary"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <a
             href={BLOG_URL}
             target="_blank"
@@ -80,6 +109,21 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
+            <div className="border-t pt-3">
+              <p className="px-4 pb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                About
+              </p>
+              {aboutLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block px-4 py-2 text-foreground/80 hover:bg-muted rounded-md"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
             <a
               href={BLOG_URL}
               target="_blank"

@@ -16,6 +16,10 @@ const entries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
   { path: "/demo", changefreq: "monthly", priority: "0.9" },
   { path: "/faq", changefreq: "monthly", priority: "0.8" },
+  { path: "/about", changefreq: "monthly", priority: "0.8" },
+  { path: "/about/auto-repair-estimate-software", changefreq: "monthly", priority: "0.9" },
+  { path: "/about/auto-repair-invoicing-software", changefreq: "monthly", priority: "0.9" },
+  { path: "/about/free-auto-repair-shop-software", changefreq: "monthly", priority: "0.8" },
 ]
 
 function generateSitemap(entries: SitemapEntry[]) {
