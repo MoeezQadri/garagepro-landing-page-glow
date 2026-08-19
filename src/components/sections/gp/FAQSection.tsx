@@ -4,6 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "@phosphor-icons/react";
 
 const faqs = [
   {
@@ -48,6 +50,14 @@ const FAQSection = () => {
               </AccordionItem>
             ))}
           </Accordion>
+          <div className="mt-8 text-center">
+            <Link
+              to="/faq"
+              className="inline-flex items-center gap-2 text-base font-semibold text-mint-800 underline-offset-4 hover:underline"
+            >
+              See all frequently asked questions <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
