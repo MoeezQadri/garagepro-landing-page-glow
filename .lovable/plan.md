@@ -17,11 +17,12 @@ Because the landing page's own theme (forest green, Archivo Black, rounded-full 
 ## What the visitor experiences
 
 1. Lands on `/demo` — short marketing intro and a "Launch the demo shop" button, then the full-width sandbox.
-2. A persistent banner: "Demo shop with sample data — nothing here is real. Reset data / Start free trial".
+2. A persistent banner: "Demo shop with sample data — invoicing is fully playable, everything else is a preview. Reset invoices / Start free trial".
 3. Seeded data: ~8 customers, 10 vehicles, 12 invoices across statuses, 10 tasks, 4 mechanics, ~25 parts, and enough history for the dashboard metrics and revenue chart to look real.
-4. Fully interactive: create/edit invoices (line items, parts, labour hours, tax, discount, payments, live totals), add customers and vehicles, move tasks through statuses, filter and sort lists.
-5. All changes persist in `localStorage` for that browser; "Reset demo data" restores the seed.
-6. On **Download PDF** or **Send to customer**, the gate dialog asks for name, email, shop name, optional phone. After submitting, the print-styled invoice opens for save/print, and the gate is remembered so it doesn't reappear.
+4. **Invoicing is the only editable area.** Visitors can create an invoice, pick a customer and vehicle, add and remove parts and labour rows, change quantities, rates, hours, tax and discount, record a payment, and watch totals recalculate — same form and math as the real app.
+5. **Everything else is a locked read-only preview.** Dashboard, Customers, Vehicles, Tasks, Mechanics and Parts render with the sample data, but every input and action button (Add, Edit, Delete, status change) is disabled. Clicking or hovering a locked control shows "Available in the full version — start your free trial", and locked pages carry a subtle "Preview only" badge in the page header. Read-only search and sorting stay enabled so the previews still feel alive.
+6. Invoice edits persist in `localStorage` for that browser; "Reset invoices" restores the seed. Nothing else is mutable, so nothing else needs resetting.
+7. On **Download PDF** or **Send to customer**, the gate dialog asks for name, email, shop name, optional phone. After submitting, the print-styled invoice opens for save/print, and the gate is remembered so it doesn't reappear.
 
 ## Lead capture
 
