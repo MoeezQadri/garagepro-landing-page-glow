@@ -14,9 +14,6 @@ const DESCRIPTION =
 const URL = "https://mygaragepro.co/demo";
 
 const DemoLanding = () => {
-  const openSandbox = () =>
-    trackCta("Open the Sandbox", { location: "demo_landing_hero", destination: "sandbox" });
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
