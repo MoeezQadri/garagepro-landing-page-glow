@@ -27,7 +27,7 @@ import {
 } from "./PreviewTables";
 import { APP_SUBSCRIBE_URL, CALENDLY_URL } from "@/lib/links";
 import { trackCta } from "@/lib/analytics";
-import logo from "@/assets/garagepro-logo-v2.png";
+import Logo from "@/components/brand/Logo";
 
 type ViewKey =
   | "dashboard"
@@ -70,7 +70,7 @@ const SandboxShell = () => {
     }
     switch (view) {
       case "dashboard":
-        return <DashboardView />;
+        return <DashboardView onOpenInvoices={() => go("invoices")} />;
       case "customers":
         return <CustomersView />;
       case "vehicles":
@@ -94,7 +94,7 @@ const SandboxShell = () => {
           )}
         >
           <Link to="/" className="mb-6 flex items-center gap-2 px-2">
-            <img src={logo} alt="GaragePro" className="h-8 w-auto brightness-0 invert" />
+            <Logo invert className="[&_img]:h-8 [&_img]:md:h-8" />
           </Link>
           <p className="mb-2 px-2 text-xs uppercase tracking-wider text-white/40">
             {shop.name}
@@ -134,7 +134,7 @@ const SandboxShell = () => {
               href={APP_SUBSCRIBE_URL}
               target="_blank"
               rel="noreferrer"
-              onClick={() => trackCta("Start free trial", "demo_sandbox_sidebar")}
+              onClick={() => trackCta("Start free trial", { location: "demo_sandbox_sidebar" })}
             >
               <Button size="sm" className="w-full bg-white text-neutral-900 hover:bg-white/90">
                 Start free trial
@@ -165,7 +165,7 @@ const SandboxShell = () => {
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noreferrer"
-                onClick={() => trackCta("Book a walkthrough", "demo_sandbox_header")}
+                onClick={() => trackCta("Book a walkthrough", { location: "demo_sandbox_header" })}
               >
                 <Button variant="outline" size="sm">
                   Book a walkthrough
