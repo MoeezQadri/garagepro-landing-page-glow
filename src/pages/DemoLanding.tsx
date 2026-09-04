@@ -113,12 +113,13 @@ const DemoLanding = () => {
                 <Button asChild size="lg" className="rounded-full">
                   <Link
                     to="/demo/sandbox"
-                    onClick={() =>
+                    onClick={() => {
                       trackCta("Open the Sandbox", {
                         location: "demo_landing_mid",
                         destination: "sandbox",
-                      })
-                    }
+                      });
+                      trackConversion();
+                    }}
                   >
                     Open the Sandbox <ArrowRight size={16} className="ml-2" />
                   </Link>
@@ -145,12 +146,13 @@ const DemoLanding = () => {
                     href={APP_SUBSCRIBE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() =>
+                    onClick={() => {
                       trackCta("Start Your Free Trial", {
                         location: "demo_landing_footer",
                         destination: "subscribe",
-                      })
-                    }
+                      });
+                      trackConversion();
+                    }}
                   >
                     Start Your Free Trial — 14 Days, Full Access
                   </a>
@@ -165,13 +167,14 @@ const DemoLanding = () => {
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() =>
+                    onClick={() => {
                       trackCta(
                         "Talk to Us First",
                         { location: "demo_landing_footer", destination: "calendly" },
                         "book_demo_click"
-                      )
-                    }
+                      );
+                      trackConversion();
+                    }}
                   >
                     <Calendar size={16} className="mr-2" />
                     Talk to Us First
