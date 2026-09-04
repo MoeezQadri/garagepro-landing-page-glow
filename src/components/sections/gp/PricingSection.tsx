@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "@phosphor-icons/react";
 import { APP_SUBSCRIBE_URL, getPlanSubscribeUrl } from "@/lib/links";
-import { trackCta } from "@/lib/analytics";
+import { trackCta, trackConversion } from "@/lib/analytics";
 
 type Billing = "monthly" | "annual";
 

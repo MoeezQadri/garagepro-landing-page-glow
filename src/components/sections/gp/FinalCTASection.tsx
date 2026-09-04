@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "@phosphor-icons/react";
 import { APP_SUBSCRIBE_URL } from "@/lib/links";
-import { trackCta } from "@/lib/analytics";
+import { trackCta, trackConversion } from "@/lib/analytics";
 
 const FinalCTASection = () => {
   return (

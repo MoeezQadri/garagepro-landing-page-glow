@@ -2,7 +2,7 @@
 import { EnvelopeSimple as Mail } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
 import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL } from "@/lib/links";
-import { trackCta } from "@/lib/analytics";
+import { trackCta, trackConversion } from "@/lib/analytics";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

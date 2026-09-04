@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { List as Menu, X } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
 import { APP_SUBSCRIBE_URL, BLOG_URL } from "@/lib/links";
-import { trackCta } from "@/lib/analytics";
+import { trackCta, trackConversion } from "@/lib/analytics";
 
 const navLinks = [
   { href: "#features", label: "Features" },
