@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "@phosphor-icons/react";
 import { APP_SUBSCRIBE_URL, getPlanSubscribeUrl } from "@/lib/links";
-import { trackCta } from "@/lib/analytics";
+import { trackCta, trackConversion } from "@/lib/analytics";
 
 type Billing = "monthly" | "annual";
 
@@ -187,13 +187,14 @@ const PricingSection = () => {
                     href={subscribeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() =>
+                    onClick={() => {
                       trackCta(
                         plan.cta,
                         { location: "pricing", plan: plan.planKey, billing },
                         "select_plan_click"
-                      )
-                    }
+                      );
+                      trackConversion(undefined, plan.name === "Free" ? 0 : undefined);
+                    }}
                   >
                     {plan.cta}
                   </a>

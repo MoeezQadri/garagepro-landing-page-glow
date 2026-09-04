@@ -1,5 +1,9 @@
-// Google Analytics (GA4) via gtag.js
+// Google Analytics (GA4) and Google Ads (gtag.js)
 const MEASUREMENT_ID = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY as
+  | string
+  | undefined;
+
+const GOOGLE_ADS_CONVERSION_ID = import.meta.env.VITE_GOOGLE_ADS_CONVERSION_ID as
   | string
   | undefined;
 
@@ -27,18 +31,29 @@ export function gtag(...args: unknown[]) {
 }
 
 export function initAnalytics() {
-  if (!MEASUREMENT_ID || typeof document === "undefined") return;
+  if (typeof document === "undefined") return;
+  if (!MEASUREMENT_ID && !GOOGLE_ADS_CONVERSION_ID) return;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = gtag;
 
+  const primaryId = MEASUREMENT_ID || GOOGLE_ADS_CONVERSION_ID;
+  if (!primaryId) return;
+
   const script = document.createElement("script");
   script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${primaryId}`;
   document.head.appendChild(script);
 
   gtag("js", new Date());
-  gtag("config", MEASUREMENT_ID);
+
+  if (MEASUREMENT_ID) {
+    gtag("config", MEASUREMENT_ID, { send_page_view: true });
+  }
+
+  if (GOOGLE_ADS_CONVERSION_ID) {
+    gtag("config", GOOGLE_ADS_CONVERSION_ID);
+  }
 }
 
 export function trackEvent(name: string, params?: Record<string, unknown>) {
@@ -52,4 +67,29 @@ export function trackCta(
   eventName = "cta_click"
 ) {
   trackEvent(eventName, { label, ...(params ?? {}) });
+}
+
+/**
+ * Track a Google Ads conversion.
+ * `label` is optional. If provided it should be the conversion label suffix,
+ * e.g. "abcD1234eFghIj0". The full send_to becomes "AW-XXXXXXXXXX/label".
+ */
+export function trackConversion(
+  label?: string,
+  value?: number,
+  currency = "USD"
+) {
+  if (!GOOGLE_ADS_CONVERSION_ID) return;
+
+  const sendTo = label
+    ? `${GOOGLE_ADS_CONVERSION_ID}/${label}`
+    : GOOGLE_ADS_CONVERSION_ID;
+
+  const params: Record<string, unknown> = { send_to: sendTo };
+  if (typeof value === "number") {
+    params.value = value;
+    params.currency = currency;
+  }
+
+  gtag("event", "conversion", params);
 }
