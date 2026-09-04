@@ -187,13 +187,14 @@ const PricingSection = () => {
                     href={subscribeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() =>
+                    onClick={() => {
                       trackCta(
                         plan.cta,
                         { location: "pricing", plan: plan.planKey, billing },
                         "select_plan_click"
-                      )
-                    }
+                      );
+                      trackConversion(undefined, plan.name === "Free" ? 0 : undefined);
+                    }}
                   >
                     {plan.cta}
                   </a>

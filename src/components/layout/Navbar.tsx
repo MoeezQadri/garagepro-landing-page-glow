@@ -78,7 +78,10 @@ const Navbar = () => {
               href={APP_SUBSCRIBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackCta("Start Free", { location: "navbar", destination: "subscribe" })}
+              onClick={() => {
+                trackCta("Start Free", { location: "navbar", destination: "subscribe" });
+                trackConversion();
+              }}
             >
               Start Free
             </a>
@@ -141,9 +144,10 @@ const Navbar = () => {
                 href={APP_SUBSCRIBE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() =>
-                  trackCta("Start Free", { location: "navbar_mobile", destination: "subscribe" })
-                }
+                onClick={() => {
+                  trackCta("Start Free", { location: "navbar_mobile", destination: "subscribe" });
+                  trackConversion();
+                }}
               >
                 Start Free
               </a>

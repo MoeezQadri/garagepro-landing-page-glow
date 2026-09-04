@@ -44,9 +44,10 @@ const HeroSection = () => {
                   href={APP_SUBSCRIBE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() =>
-                    trackCta("Start Free Trial", { location: "hero", destination: "subscribe" })
-                  }
+                  onClick={() => {
+                    trackCta("Start Free Trial", { location: "hero", destination: "subscribe" });
+                    trackConversion();
+                  }}
                 >
                   Start Free — 14 Days, Full Access
                   <ArrowRight size={16} className="ml-2" />
