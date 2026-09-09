@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { List as Menu, X } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
-import { APP_SUBSCRIBE_URL, BLOG_URL } from "@/lib/links";
+import { APP_SUBSCRIBE_URL, BLOG_URL, LOGIN_URL } from "@/lib/links";
 import { trackCta, trackConversion } from "@/lib/analytics";
 
 const navLinks = [
@@ -73,6 +73,17 @@ const Navbar = () => {
           >
             Blog
           </a>
+          <a
+            href={LOGIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+            onClick={() =>
+              trackCta("Login", { location: "navbar", destination: "login" }, "login_page_click")
+            }
+          >
+            Login
+          </a>
           <Button asChild className="btn-signage bg-foreground hover:bg-foreground/90 text-background">
             <a
               href={APP_SUBSCRIBE_URL}
@@ -138,6 +149,18 @@ const Navbar = () => {
               }}
             >
               Blog
+            </a>
+            <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 text-foreground/80 hover:bg-muted rounded-md"
+              onClick={() => {
+                trackCta("Login", { location: "navbar_mobile", destination: "login" }, "login_page_click");
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Login
             </a>
             <Button asChild className="w-full rounded-full bg-foreground hover:bg-foreground/90 text-background">
               <a

@@ -1,7 +1,7 @@
 
 import { EnvelopeSimple as Mail } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
-import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL } from "@/lib/links";
+import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL, LOGIN_URL } from "@/lib/links";
 import { trackCta, trackConversion } from "@/lib/analytics";
 
 const Footer = () => {
@@ -106,6 +106,19 @@ const Footer = () => {
               More
             </h3>
             <ul className="space-y-3 text-sm">
+              <li>
+                <a
+                  href={LOGIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mint-300 hover:text-white transition-colors"
+                  onClick={() =>
+                    trackCta("Login", { location: "footer", destination: "login" }, "login_page_click")
+                  }
+                >
+                  Login
+                </a>
+              </li>
               <li>
                 <a
                   href={BLOG_URL}
