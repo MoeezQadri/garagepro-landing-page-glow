@@ -1,7 +1,7 @@
 
 import { EnvelopeSimple as Mail } from "@phosphor-icons/react";
 import Logo from "@/components/brand/Logo";
-import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL } from "@/lib/links";
+import { BLOG_URL, CALENDLY_URL, CONTACT_EMAIL, LOGIN_URL } from "@/lib/links";
 import { trackCta, trackConversion } from "@/lib/analytics";
 
 const Footer = () => {

@@ -3,6 +3,7 @@ export const CALENDLY_URL = "https://calendly.com/mygaragepro-info/30min";
 export const BLOG_URL = "https://blog.mygaragepro.co";
 export const CONTACT_EMAIL = "info@mygaragepro.co";
 export const APP_SUBSCRIBE_URL = "https://app.mygaragepro.co/subscribe";
+export const LOGIN_URL = "https://app.mygaragepro.co/auth/login";
 
 export const getPlanSubscribeUrl = (plan: string) =>
   `${APP_SUBSCRIBE_URL}?plan=${encodeURIComponent(plan.toLowerCase())}`;
