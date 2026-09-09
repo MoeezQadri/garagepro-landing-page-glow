@@ -30,7 +30,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -101,7 +101,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-foreground"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -111,7 +111,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t">
+        <div className="lg:hidden bg-white border-t">
           <div className="container py-4 flex flex-col space-y-4">
             {navLinks.map((link) => (
               <a
