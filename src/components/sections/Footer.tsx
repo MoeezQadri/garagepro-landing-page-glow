@@ -108,6 +108,19 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
+                  href={LOGIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mint-300 hover:text-white transition-colors"
+                  onClick={() =>
+                    trackCta("Login", { location: "footer", destination: "login" }, "login_page_click")
+                  }
+                >
+                  Login
+                </a>
+              </li>
+              <li>
+                <a
                   href={BLOG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
